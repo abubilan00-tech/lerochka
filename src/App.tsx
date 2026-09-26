@@ -614,13 +614,20 @@ function App() {
                       {[
                         { type: 'ВЧ', query: 'купить товары онлайн', comp: 'Высокая' },
                         { type: 'ВЧ', query: 'интернет магазин', comp: 'Очень высокая' },
+                        { type: 'СЧ', query: 'купить тг аккаунт', comp: 'Средняя' },
+                        { type: 'СЧ', query: 'купить телеграм аккаунт', comp: 'Средняя' },
+                        { type: 'СЧ', query: 'купить номер физ', comp: 'Средняя' },
                         { type: 'СЧ', query: 'магазин электроники онлайн', comp: 'Средняя' },
                         { type: 'СЧ', query: 'купить беспроводные наушники', comp: 'Средняя' },
                         { type: 'СЧ', query: 'купить смарт часы', comp: 'Средняя' },
+                        { type: 'НЧ', query: 'тг аккаунт с номером купить', comp: 'Низкая' },
+                        { type: 'НЧ', query: 'физический номер для телеграм', comp: 'Низкая' },
                         { type: 'НЧ', query: 'купить худи оверсайз недорого', comp: 'Низкая' },
                         { type: 'НЧ', query: 'кожаный чехол для телефона купить', comp: 'Низкая' },
                         { type: 'НЧ', query: 'рюкзак с usb портом купить', comp: 'Низкая' },
                         { type: 'НЧ', query: 'портативная bluetooth колонка', comp: 'Низкая' },
+                        { type: 'МЧ', query: 'купить telegram аккаунт с историей', comp: 'Очень низкая' },
+                        { type: 'МЧ', query: 'физ номер для telegram навсегда', comp: 'Очень низкая' },
                         { type: 'МЧ', query: 'купить товары через telegram бот', comp: 'Очень низкая' },
                         { type: 'МЧ', query: 'магазин с заказом через телеграм', comp: 'Очень низкая' },
                       ].map((row, i) => (
@@ -632,6 +639,201 @@ function App() {
                       ))}
                     </tbody>
                   </table>
+                </div>
+              </div>
+
+              {/* Кластеры ключевых слов */}
+              <div className="bg-white rounded-xl p-5 border-2 border-blue-200">
+                <p className="font-bold text-blue-800 text-lg mb-3"><i className="fas fa-layer-group text-blue-600 mr-2"></i>Кластеризация: группируем ключи по товарам</p>
+                <p className="text-sm text-gray-600 mb-4">
+                  <strong>Кластер</strong> — это группа ключевых слов, объединённых одной темой. Каждый кластер = одна страница.
+                </p>
+
+                <div className="space-y-4">
+                  {/* Кластер 1 */}
+                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center text-sm font-bold">1</span>
+                      <p className="font-bold text-blue-800">Кластер: Telegram аккаунты</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {[
+                        'купить тг аккаунт',
+                        'купить телеграм аккаунт',
+                        'telegram аккаунт купить',
+                        'тг аккаунт с номером',
+                        'готовый telegram аккаунт',
+                        'купить аккаунт телеграм',
+                        'тг аккаунт с историей',
+                        'telegram аккаунт премиум',
+                        'купить тг аккаунт недорого',
+                        'telegram аккаунт с подпиской',
+                      ].map((key, i) => (
+                        <div key={i} className="flex items-center gap-2 bg-white rounded px-3 py-1.5 border border-blue-100">
+                          <i className="fas fa-key text-blue-400 text-xs"></i>
+                          <span className="text-xs text-gray-700">{key}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-3 bg-blue-100 rounded p-2">
+                      <p className="text-xs text-blue-800"><strong>📄 Страница:</strong> /telegram-akkaunt</p>
+                      <p className="text-xs text-blue-800"><strong>🔍 Поисковый запрос:</strong> «купить тг аккаунт» → <strong className="text-green-700">покажется эта страница</strong></p>
+                    </div>
+                  </div>
+
+                  {/* Кластер 2 */}
+                  <div className="bg-purple-50 rounded-lg p-4 border border-purple-100">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="w-8 h-8 bg-purple-500 text-white rounded-lg flex items-center justify-center text-sm font-bold">2</span>
+                      <p className="font-bold text-purple-800">Кластер: Номера физ</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {[
+                        'купить номер физ',
+                        'номер физ купить',
+                        'физический номер для телеграм',
+                        'купить физ номер тг',
+                        'физ номер для регистрации',
+                        'купить sim для телеграм',
+                        'номер физ для telegram',
+                        'физ номер без привязки',
+                        'купить физ номер навсегда',
+                        'физ номер с гарантией',
+                      ].map((key, i) => (
+                        <div key={i} className="flex items-center gap-2 bg-white rounded px-3 py-1.5 border border-purple-100">
+                          <i className="fas fa-key text-purple-400 text-xs"></i>
+                          <span className="text-xs text-gray-700">{key}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-3 bg-purple-100 rounded p-2">
+                      <p className="text-xs text-purple-800"><strong>📄 Страница:</strong> /nomer-fiz</p>
+                      <p className="text-xs text-purple-800"><strong>🔍 Поисковый запрос:</strong> «купить номер физ» → <strong className="text-green-700">покажется эта страница</strong></p>
+                    </div>
+                  </div>
+
+                  {/* Кластер 3 */}
+                  <div className="bg-green-50 rounded-lg p-4 border border-green-100">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="w-8 h-8 bg-green-500 text-white rounded-lg flex items-center justify-center text-sm font-bold">3</span>
+                      <p className="font-bold text-green-800">Кластер: Электроника</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {[
+                        'купить беспроводные наушники',
+                        'bluetooth наушники купить',
+                        'наушники с шумоподавлением',
+                        'купить смарт часы',
+                        'портативная колонка bluetooth',
+                        'купить фитнес браслет',
+                      ].map((key, i) => (
+                        <div key={i} className="flex items-center gap-2 bg-white rounded px-3 py-1.5 border border-green-100">
+                          <i className="fas fa-key text-green-400 text-xs"></i>
+                          <span className="text-xs text-gray-700">{key}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-3 bg-green-100 rounded p-2">
+                      <p className="text-xs text-green-800"><strong>📄 Страница:</strong> /elektronika</p>
+                      <p className="text-xs text-green-800"><strong>🔍 Поисковый запрос:</strong> «купить беспроводные наушники» → <strong className="text-green-700">покажется эта страница</strong></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Визуальная схема */}
+              <div className="bg-white rounded-xl p-5 border-2 border-amber-200">
+                <p className="font-bold text-amber-800 text-lg mb-3"><i className="fas fa-diagram-project text-amber-600 mr-2"></i>Как это работает в поиске</p>
+                <div className="bg-gray-50 rounded-lg p-4 font-mono text-xs space-y-3">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-bold">🔍 Пользователь ищет: «купить тг аккаунт»</span>
+                    <i className="fas fa-arrow-right text-gray-400"></i>
+                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">✅ Google находит: /telegram-akkaunt</span>
+                  </div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-bold">🔍 Пользователь ищет: «купить номер физ»</span>
+                    <i className="fas fa-arrow-right text-gray-400"></i>
+                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">✅ Google находит: /nomer-fiz</span>
+                  </div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">🔍 Пользователь ищет: «купить наушники»</span>
+                    <i className="fas fa-arrow-right text-gray-400"></i>
+                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">✅ Google находит: /elektronika</span>
+                  </div>
+                </div>
+                <div className="mt-3 bg-amber-50 rounded p-3 border border-amber-200">
+                  <p className="text-xs text-amber-800"><i className="fas fa-exclamation-triangle mr-1"></i><strong>Ошибка:</strong> Если на странице /telegram-akkaunt написать ключи «купить номер физ» — поисковик НЕ покажет эту страницу по запросу «купить номер физ», потому что контент страницы не соответствует запросу!</p>
+                </div>
+              </div>
+
+              {/* Практика: как прописать мета-теги */}
+              <div className="bg-white rounded-xl p-5 border-2 border-green-200">
+                <p className="font-bold text-green-800 text-lg mb-3"><i className="fas fa-code text-green-600 mr-2"></i>Практика: прописываем мета-теги для каждого товара</p>
+                <p className="text-sm text-gray-600 mb-4">
+                  В коде сайта нужно указать <strong>уникальные мета-теги</strong> для каждой страницы/категории. Вот как это делается:
+                </p>
+
+                <div className="space-y-4">
+                  {/* Пример 1: index.html для главной */}
+                  <div className="bg-gray-900 rounded-lg p-4">
+                    <p className="text-green-400 font-bold text-xs mb-2">📄 index.html — Главная страница (общие ключи)</p>
+                    <pre className="text-xs text-gray-300 overflow-x-auto whitespace-pre-wrap">{`<title>ShopBot — Магазин товаров | Купить онлайн через Telegram</title>
+<meta name="description" content="Каталог товаров с быстрой покупкой через Telegram бот. Электроника, одежда, аксессуары." />
+<meta name="keywords" content="купить товары онлайн, интернет магазин, telegram бот магазин, каталог товаров" />`}</pre>
+                  </div>
+
+                  {/* Пример 2: Страница Telegram аккаунтов */}
+                  <div className="bg-gray-900 rounded-lg p-4">
+                    <p className="text-blue-400 font-bold text-xs mb-2">📄 telegram-akkaunt.html — Страница ТГ аккаунтов</p>
+                    <pre className="text-xs text-gray-300 overflow-x-auto whitespace-pre-wrap">{`<title>Купить Telegram аккаунт | ТГ аккаунт с номером — ShopBot</title>
+<meta name="description" content="Купить Telegram аккаунт быстро и безопасно. Готовые ТГ аккаунты с номером, подтвержденные. Мгновенная доставка через бот." />
+<meta name="keywords" content="купить тг аккаунт, купить телеграм аккаунт, telegram аккаунт купить, тг аккаунт с номером, готовый telegram аккаунт, купить аккаунт телеграм" />
+
+<h1>Купить Telegram аккаунт</h1>
+<p>У нас вы можете купить тг аккаунт с гарантией...</p>`}</pre>
+                  </div>
+
+                  {/* Пример 3: Страница Номера физ */}
+                  <div className="bg-gray-900 rounded-lg p-4">
+                    <p className="text-purple-400 font-bold text-xs mb-2">📄 nomer-fiz.html — Страница Номера физ</p>
+                    <pre className="text-xs text-gray-300 overflow-x-auto whitespace-pre-wrap">{`<title>Купить номер физ | Физический номер для Telegram — ShopBot</title>
+<meta name="description" content="Купить номер физ для регистрации в Telegram. Физические номера SIM-карт с гарантией. Быстрая активация." />
+<meta name="keywords" content="купить номер физ, номер физ купить, физический номер для телеграм, купить физ номер тг, номер для telegram, физ номер sim" />
+
+<h1>Купить номер физ</h1>
+<p>Физический номер для Telegram с гарантией...</p>`}</pre>
+                  </div>
+                </div>
+
+                <div className="mt-4 bg-green-50 rounded-lg p-4 border border-green-200">
+                  <p className="text-green-800 text-sm"><i className="fas fa-check-circle mr-2"></i><strong>Результат:</strong></p>
+                  <ul className="mt-2 space-y-1 text-sm text-green-700 ml-5 list-disc">
+                    <li>Поиск «купить тг аккаунт» → Google покажет страницу <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">telegram-akkaunt.html</code></li>
+                    <li>Поиск «купить номер физ» → Google покажет страницу <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">nomer-fiz.html</code></li>
+                    <li>Поиск «купить товары онлайн» → Google покажет главную <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">index.html</code></li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Чек-лист для каждой страницы */}
+              <div className="bg-white rounded-xl p-5 border-2 border-violet-200">
+                <p className="font-bold text-violet-800 text-lg mb-3"><i className="fas fa-clipboard-list text-violet-600 mr-2"></i>Чек-лист SEO для каждой страницы</p>
+                <div className="space-y-2">
+                  {[
+                    { text: 'Title содержит главный ключ (в начале)', icon: 'fa-heading' },
+                    { text: 'Description 150-160 символов с ключом и призывом', icon: 'fa-align-left' },
+                    { text: 'Keywords — 5-10 ключевых фраз через запятую', icon: 'fa-key' },
+                    { text: 'H1 заголовок содержит основной ключ', icon: 'fa-h1' },
+                    { text: 'Текст страницы содержит ключи естественно (2-3 раза на 1000 слов)', icon: 'fa-paragraph' },
+                    { text: 'Alt у картинок описывает содержимое с ключом', icon: 'fa-image' },
+                    { text: 'URL страницы содержит ключ (человеко-понятный)', icon: 'fa-link' },
+                    { text: 'Внутренние ссылки на другие релевантные страницы', icon: 'fa-code-branch' },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 bg-violet-50 rounded-lg p-2">
+                      <i className={`fas ${item.icon} text-violet-500 w-5 text-center`}></i>
+                      <span className="text-sm text-gray-700">{item.text}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -723,6 +925,125 @@ function App() {
                   <div>
                     <p className="text-gray-400 mb-1"># Keywords (ключевые слова)</p>
                     <p className="text-green-400 break-all">{'<meta name="keywords" content="купить товары онлайн, интернет магазин, telegram бот магазин, каталог товаров, заказать онлайн, магазин электроники" />'}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* ПРИНЦИП: разные ключи для разных товаров */}
+              <div className="bg-gradient-to-br from-indigo-50 to-violet-50 rounded-xl p-5 border-2 border-indigo-200">
+                <p className="font-bold text-indigo-800 text-lg mb-3"><i className="fas fa-bullseye text-indigo-600 mr-2"></i>Главный принцип SEO: разные товары = разные ключи</p>
+                <p className="text-sm text-gray-600 mb-4">
+                  Каждая страница/товар должна иметь <strong>свой набор ключевых слов</strong>. Когда человек ищет «купить тг аккаунт» — он должен найти страницу с Telegram аккаунтами. Когда ищет «купить номер физ» — страницу с номерами.
+                </p>
+                
+                <div className="bg-white rounded-lg p-4 border border-indigo-100 mb-4">
+                  <p className="font-semibold text-indigo-700 mb-3">📌 Пример распределения ключей по товарам:</p>
+                  
+                  <div className="space-y-4">
+                    {/* Товар 1: ТГ аккаунт */}
+                    <div className="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+                      <p className="font-bold text-blue-800 mb-2">🔹 Товар: Telegram аккаунт</p>
+                      <div className="space-y-2 text-sm">
+                        <div>
+                          <p className="font-semibold text-blue-700">Title:</p>
+                          <p className="text-gray-700 font-mono text-xs bg-blue-100 p-2 rounded">Купить Telegram аккаунт | ТГ аккаунт с гарантией — ShopBot</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-blue-700">Description:</p>
+                          <p className="text-gray-700 font-mono text-xs bg-blue-100 p-2 rounded">Купить Telegram аккаунт быстро и безопасно. Готовые ТГ аккаунты с номером, подтвержденные. Мгновенная доставка через бот.</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-blue-700">Keywords:</p>
+                          <p className="text-gray-700 font-mono text-xs bg-blue-100 p-2 rounded break-all">купить тг аккаунт, купить телеграм аккаунт, telegram аккаунт купить, тг аккаунт с номером, готовый telegram аккаунт, купить аккаунт телеграм, telegram account</p>
+                        </div>
+                      </div>
+                      <div className="mt-3 bg-blue-100 rounded p-2">
+                        <p className="text-xs text-blue-800"><strong>✅ Результат:</strong> При поиске «купить тг аккаунт» → Google/Яндекс покажет эту страницу</p>
+                      </div>
+                    </div>
+
+                    {/* Товар 2: Номер физ */}
+                    <div className="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-500">
+                      <p className="font-bold text-purple-800 mb-2">🔹 Товар: Номер физ (физический номер)</p>
+                      <div className="space-y-2 text-sm">
+                        <div>
+                          <p className="font-semibold text-purple-700">Title:</p>
+                          <p className="text-gray-700 font-mono text-xs bg-purple-100 p-2 rounded">Купить номер физ | Физический номер для Telegram — ShopBot</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-purple-700">Description:</p>
+                          <p className="text-gray-700 font-mono text-xs bg-purple-100 p-2 rounded">Купить номер физ для регистрации в Telegram. Физические номера SIM-карт с гарантией. Быстрая активация, поддержка 24/7.</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-purple-700">Keywords:</p>
+                          <p className="text-gray-700 font-mono text-xs bg-purple-100 p-2 rounded break-all">купить номер физ, номер физ купить, физический номер для телеграм, купить физ номер тг, номер для telegram, физ номер sim, купить sim для телеграм</p>
+                        </div>
+                      </div>
+                      <div className="mt-3 bg-purple-100 rounded p-2">
+                        <p className="text-xs text-purple-800"><strong>✅ Результат:</strong> При поиске «купить номер физ» → покажется эта страница</p>
+                      </div>
+                    </div>
+
+                    {/* Товар 3: Электроника */}
+                    <div className="bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
+                      <p className="font-bold text-green-800 mb-2">🔹 Товар: Беспроводные наушники</p>
+                      <div className="space-y-2 text-sm">
+                        <div>
+                          <p className="font-semibold text-green-700">Title:</p>
+                          <p className="text-gray-700 font-mono text-xs bg-green-100 p-2 rounded">Купить беспроводные наушники | Bluetooth наушники с шумоподавлением</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-green-700">Keywords:</p>
+                          <p className="text-gray-700 font-mono text-xs bg-green-100 p-2 rounded break-all">купить беспроводные наушники, bluetooth наушники, наушники с шумоподавлением, беспроводные наушники купить, наушники bluetooth</p>
+                        </div>
+                      </div>
+                      <div className="mt-3 bg-green-100 rounded p-2">
+                        <p className="text-xs text-green-800"><strong>✅ Результат:</strong> При поиске «купить беспроводные наушники» → эта страница</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
+                  <p className="text-amber-800 text-sm"><i className="fas fa-lightbulb mr-2"></i><strong>Важно:</strong> Не смешивайте ключи! Если на странице про «тг аккаунт» написать «купить номер физ» — поисковик запутается и не покажет страницу ни по одному запросу.</p>
+                </div>
+              </div>
+
+              {/* Как это работает технически */}
+              <div className="bg-white rounded-xl p-5 border-2 border-violet-200">
+                <p className="font-bold text-violet-800 text-lg mb-3"><i className="fas fa-cogs text-violet-600 mr-2"></i>Как реализовать на практике</p>
+                <div className="space-y-4">
+                  <div className="bg-violet-50 rounded-lg p-4">
+                    <p className="font-semibold text-violet-700 mb-2">Вариант 1: Отдельные страницы для каждого товара</p>
+                    <p className="text-sm text-gray-600 mb-2">Каждый товар = отдельная страница со своими мета-тегами:</p>
+                    <div className="font-mono text-xs bg-white p-3 rounded border border-violet-100 space-y-1">
+                      <p className="text-gray-600">/telegram-akkaunt → title: «Купить Telegram аккаунт...»</p>
+                      <p className="text-gray-600">/nomer-fiz → title: «Купить номер физ...»</p>
+                      <p className="text-gray-600">/naushniki → title: «Купить беспроводные наушники...»</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-purple-50 rounded-lg p-4">
+                    <p className="font-semibold text-purple-700 mb-2">Вариант 2: Динамические мета-теги (React)</p>
+                    <p className="text-sm text-gray-600 mb-2">Меняйте мета-теги в зависимости от выбранного товара/категории:</p>
+                    <div className="font-mono text-xs bg-white p-3 rounded border border-purple-100">
+                      <p className="text-gray-600">{'// В компоненте товара:'}</p>
+                      <p className="text-gray-600">{'useEffect(() => {'}</p>
+                      <p className="text-gray-600">{'  document.title = `Купить ${product.name} | ${product.category}`;'}</p>
+                      <p className="text-gray-600">{'  document.querySelector("meta[name=description]")'}</p>
+                      <p className="text-gray-600">{'    .setAttribute("content", product.description);'}</p>
+                      <p className="text-gray-600">{'}'}</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-green-50 rounded-lg p-4">
+                    <p className="font-semibold text-green-700 mb-2">Вариант 3: Страницы категорий</p>
+                    <p className="text-sm text-gray-600 mb-2">Создайте отдельные страницы для каждой категории:</p>
+                    <div className="font-mono text-xs bg-white p-3 rounded border border-green-100 space-y-1">
+                      <p className="text-gray-600">/category/telegram → «Купить Telegram аккаунты, номера»</p>
+                      <p className="text-gray-600">/category/electronics → «Купить электронику онлайн»</p>
+                      <p className="text-gray-600">/category/clothing → «Купить одежду, худи, футболки»</p>
+                    </div>
                   </div>
                 </div>
               </div>
