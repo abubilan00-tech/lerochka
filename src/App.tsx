@@ -8,27 +8,47 @@ interface Product {
   category: string
   image: string
   description: string
+  // SEO fields
+  seoTitle: string
+  seoDescription: string
+  seoKeywords: string
 }
 
 interface Category {
   id: string
   name: string
+  // SEO fields
+  seoTitle: string
+  seoDescription: string
+  seoKeywords: string
+}
+
+interface GlobalSEO {
+  siteTitle: string
+  siteDescription: string
+  siteKeywords: string
+}
+
+const defaultGlobalSEO: GlobalSEO = {
+  siteTitle: 'ShopBot — Магазин товаров | Купить онлайн через Telegram',
+  siteDescription: 'ShopBot — каталог товаров с быстрой покупкой через Telegram. Электроника, одежда, аксессуары. Лучшие цены, мгновенный заказ.',
+  siteKeywords: 'купить товары онлайн, интернет магазин, telegram бот магазин, каталог товаров, заказать онлайн, магазин электроники, купить одежду онлайн, аксессуары'
 }
 
 const defaultCategories: Category[] = [
-  { id: '1', name: 'Все товары' },
-  { id: '2', name: 'Электроника' },
-  { id: '3', name: 'Одежда' },
-  { id: '4', name: 'Аксессуары' },
+  { id: '1', name: 'Все товары', seoTitle: '', seoDescription: '', seoKeywords: '' },
+  { id: '2', name: 'Электроника', seoTitle: 'Купить электронику онлайн | Наушники, смарт-часы — ShopBot', seoDescription: 'Купить электронику онлайн: беспроводные наушники, смарт-часы, портативные колонки. Лучшие цены, быстрая доставка через Telegram.', seoKeywords: 'купить электронику онлайн, беспроводные наушники купить, смарт часы купить, портативная колонка bluetooth' },
+  { id: '3', name: 'Одежда', seoTitle: 'Купить одежду онлайн | Худи, футболки — ShopBot', seoDescription: 'Купить одежду онлайн: худи оверсайз, футболки, свитшоты. Стильная одежда с доставкой через Telegram бот.', seoKeywords: 'купить одежду онлайн, худи оверсайз купить, купить футболку, стильная одежда' },
+  { id: '4', name: 'Аксессуары', seoTitle: 'Купить аксессуары | Чехлы, рюкзаки — ShopBot', seoDescription: 'Купить аксессуары: кожаные чехлы, городские рюкзаки с USB. Качественные аксессуары по выгодным ценам.', seoKeywords: 'купить аксессуары онлайн, кожаный чехол купить, рюкзак с usb, аксессуары для телефона' },
 ]
 
 const defaultProducts: Product[] = [
-  { id: '1', name: 'Беспроводные наушники', price: 2990, category: 'Электроника', image: '', description: 'Качественные беспроводные наушники с шумоподавлением' },
-  { id: '2', name: 'Смарт-часы', price: 4990, category: 'Электроника', image: '', description: 'Умные часы с фитнес-трекером' },
-  { id: '3', name: 'Худи оверсайз', price: 3490, category: 'Одежда', image: '', description: 'Стильное худи свободного кроя' },
-  { id: '4', name: 'Кожаный чехол', price: 1290, category: 'Аксессуары', image: '', description: 'Премиальный кожаный чехол для телефона' },
-  { id: '5', name: 'Портативная колонка', price: 3990, category: 'Электроника', image: '', description: 'Мощная Bluetooth колонка' },
-  { id: '6', name: 'Рюкзак городской', price: 2490, category: 'Аксессуары', image: '', description: 'Удобный городской рюкзак с USB портом' },
+  { id: '1', name: 'Беспроводные наушники', price: 2990, category: 'Электроника', image: '', description: 'Качественные беспроводные наушники с шумоподавлением', seoTitle: 'Купить беспроводные наушники | Bluetooth наушники с шумоподавлением — ShopBot', seoDescription: 'Купить беспроводные наушники с активным шумоподавлением. Bluetooth 5.0, до 30 часов работы. Быстрая доставка через Telegram.', seoKeywords: 'купить беспроводные наушники, bluetooth наушники купить, наушники с шумоподавлением, беспроводные наушники недорого' },
+  { id: '2', name: 'Смарт-часы', price: 4990, category: 'Электроника', image: '', description: 'Умные часы с фитнес-трекером', seoTitle: 'Купить смарт-часы | Умные часы с фитнес-трекером — ShopBot', seoDescription: 'Купить смарт-часы с фитнес-трекером, мониторингом сна и пульса. Водонепроницаемые, совместимы с iOS и Android.', seoKeywords: 'купить смарт часы, умные часы купить, фитнес браслет, смарт часы с трекером' },
+  { id: '3', name: 'Худи оверсайз', price: 3490, category: 'Одежда', image: '', description: 'Стильное худи свободного кроя', seoTitle: 'Купить худи оверсайз | Стильное худи свободного кроя — ShopBot', seoDescription: 'Купить худи оверсайз из качественного хлопка. Свободный крой, унисекс, разные цвета. Доставка через Telegram.', seoKeywords: 'купить худи оверсайз, худи свободного кроя, купить худи недорого, стильное худи' },
+  { id: '4', name: 'Кожаный чехол', price: 1290, category: 'Аксессуары', image: '', description: 'Премиальный кожаный чехол для телефона', seoTitle: 'Купить кожаный чехол для телефона | Премиум чехол — ShopBot', seoDescription: 'Купить кожаный чехол для телефона из натуральной кожи. Премиальное качество, точные вырезы, защита от ударов.', seoKeywords: 'купить кожаный чехол, чехол для телефона купить, кожаный чехол премиум, чехол из кожи' },
+  { id: '5', name: 'Портативная колонка', price: 3990, category: 'Электроника', image: '', description: 'Мощная Bluetooth колонка', seoTitle: 'Купить портативную Bluetooth колонку | Мощная колонка — ShopBot', seoDescription: 'Купить портативную Bluetooth колонку с мощным звуком. Водонепроницаемая, до 20 часов работы. Идеальна для путешествий.', seoKeywords: 'купить портативную колонку, bluetooth колонка купить, портативная колонка bluetooth, мощная колонка' },
+  { id: '6', name: 'Рюкзак городской', price: 2490, category: 'Аксессуары', image: '', description: 'Удобный городской рюкзак с USB портом', seoTitle: 'Купить городской рюкзак с USB | Рюкзак для ноутбука — ShopBot', seoDescription: 'Купить городской рюкзак с USB портом для зарядки. Отделение для ноутбука, водоотталкивающая ткань, удобные лямки.', seoKeywords: 'купить городской рюкзак, рюкзак с usb купить, рюкзак для ноутбука, городской рюкзак недорого' },
 ]
 
 const TELEGRAM_BOT_LINK = 'https://t.me/your_bot?start=buy'
@@ -37,12 +57,16 @@ const CLICK_WINDOW = 60000
 
 function App() {
   const [products, setProducts] = useState<Product[]>(() => {
-    const saved = localStorage.getItem('shop_products')
+    const saved = localStorage.getItem('shop_products_v2')
     return saved ? JSON.parse(saved) : defaultProducts
   })
   const [categories, setCategories] = useState<Category[]>(() => {
-    const saved = localStorage.getItem('shop_categories')
+    const saved = localStorage.getItem('shop_categories_v2')
     return saved ? JSON.parse(saved) : defaultCategories
+  })
+  const [globalSEO, setGlobalSEO] = useState<GlobalSEO>(() => {
+    const saved = localStorage.getItem('shop_global_seo')
+    return saved ? JSON.parse(saved) : defaultGlobalSEO
   })
   const [selectedCategory, setSelectedCategory] = useState('Все товары')
   const [showAdmin, setShowAdmin] = useState(false)
@@ -51,15 +75,39 @@ function App() {
   const [clickCounts, setClickCounts] = useState<number[]>([])
   const [showPasswordModal, setShowPasswordModal] = useState(false)
   const [showInstruction, setShowInstruction] = useState(false)
-  const [newProduct, setNewProduct] = useState({ name: '', price: '', category: '', image: '', description: '' })
+  const [newProduct, setNewProduct] = useState({ name: '', price: '', category: '', image: '', description: '', seoTitle: '', seoDescription: '', seoKeywords: '' })
   const [newCategory, setNewCategory] = useState('')
   const [editingProduct, setEditingProduct] = useState<Product | null>(null)
+  const [editingCategory, setEditingCategory] = useState<Category | null>(null)
   const [botLink, setBotLink] = useState(() => localStorage.getItem('shop_bot_link') || TELEGRAM_BOT_LINK)
   const [savedBotLink, setSavedBotLink] = useState(false)
+  const [savedSEO, setSavedSEO] = useState(false)
+  const [adminTab, setAdminTab] = useState<'products' | 'categories' | 'seo' | 'settings'>('products')
 
-  useEffect(() => { localStorage.setItem('shop_products', JSON.stringify(products)) }, [products])
-  useEffect(() => { localStorage.setItem('shop_categories', JSON.stringify(categories)) }, [categories])
+  useEffect(() => { localStorage.setItem('shop_products_v2', JSON.stringify(products)) }, [products])
+  useEffect(() => { localStorage.setItem('shop_categories_v2', JSON.stringify(categories)) }, [categories])
+  useEffect(() => { localStorage.setItem('shop_global_seo', JSON.stringify(globalSEO)) }, [globalSEO])
   useEffect(() => { localStorage.setItem('shop_bot_link', botLink) }, [botLink])
+
+  // Dynamic SEO: update meta tags based on selected category
+  useEffect(() => {
+    if (showAdmin || showInstruction) return
+
+    const cat = categories.find(c => c.name === selectedCategory)
+    if (cat && cat.seoTitle && selectedCategory !== 'Все товары') {
+      document.title = cat.seoTitle
+      const desc = document.querySelector('meta[name="description"]')
+      if (desc) desc.setAttribute('content', cat.seoDescription)
+      const kw = document.querySelector('meta[name="keywords"]')
+      if (kw) kw.setAttribute('content', cat.seoKeywords)
+    } else {
+      document.title = globalSEO.siteTitle
+      const desc = document.querySelector('meta[name="description"]')
+      if (desc) desc.setAttribute('content', globalSEO.siteDescription)
+      const kw = document.querySelector('meta[name="keywords"]')
+      if (kw) kw.setAttribute('content', globalSEO.siteKeywords)
+    }
+  }, [selectedCategory, categories, globalSEO, showAdmin, showInstruction])
 
   const handleBuy = (product: Product) => {
     const now = Date.now()
@@ -79,15 +127,39 @@ function App() {
 
   const handleAddProduct = () => {
     if (!newProduct.name || !newProduct.price || !newProduct.category) { alert('Заполните обязательные поля'); return }
-    const product: Product = { id: Date.now().toString(), name: newProduct.name, price: Number(newProduct.price), category: newProduct.category, image: newProduct.image, description: newProduct.description }
+    const product: Product = {
+      id: Date.now().toString(),
+      name: newProduct.name,
+      price: Number(newProduct.price),
+      category: newProduct.category,
+      image: newProduct.image,
+      description: newProduct.description,
+      seoTitle: newProduct.seoTitle || `Купить ${newProduct.name} | ${newProduct.category} — ShopBot`,
+      seoDescription: newProduct.seoDescription || newProduct.description || `Купить ${newProduct.name} по выгодной цене. Быстрая доставка через Telegram.`,
+      seoKeywords: newProduct.seoKeywords || `купить ${newProduct.name.toLowerCase()}, ${newProduct.name.toLowerCase()} купить, ${newProduct.category.toLowerCase()}`
+    }
     setProducts([...products, product])
-    setNewProduct({ name: '', price: '', category: '', image: '', description: '' })
+    setNewProduct({ name: '', price: '', category: '', image: '', description: '', seoTitle: '', seoDescription: '', seoKeywords: '' })
   }
 
   const handleUpdateProduct = () => { if (!editingProduct) return; setProducts(products.map(p => p.id === editingProduct.id ? editingProduct : p)); setEditingProduct(null) }
   const handleDeleteProduct = (id: string) => { if (confirm('Удалить товар?')) setProducts(products.filter(p => p.id !== id)) }
-  const handleAddCategory = () => { if (!newCategory) return; if (categories.find(c => c.name === newCategory)) { alert('Категория уже существует'); return }; setCategories([...categories, { id: Date.now().toString(), name: newCategory }]); setNewCategory('') }
+
+  const handleAddCategory = () => {
+    if (!newCategory) return
+    if (categories.find(c => c.name === newCategory)) { alert('Категория уже существует'); return }
+    setCategories([...categories, { id: Date.now().toString(), name: newCategory, seoTitle: '', seoDescription: '', seoKeywords: '' }])
+    setNewCategory('')
+  }
+
+  const handleUpdateCategory = () => { if (!editingCategory) return; setCategories(categories.map(c => c.id === editingCategory.id ? editingCategory : c)); setEditingCategory(null) }
   const handleDeleteCategory = (id: string) => { if (id === '1') { alert('Нельзя удалить "Все товары"'); return }; if (confirm('Удалить?')) setCategories(categories.filter(c => c.id !== id)) }
+
+  const handleSaveGlobalSEO = () => {
+    localStorage.setItem('shop_global_seo', JSON.stringify(globalSEO))
+    setSavedSEO(true)
+    setTimeout(() => setSavedSEO(false), 2000)
+  }
 
   const filteredProducts = selectedCategory === 'Все товары' ? products : products.filter(p => p.category === selectedCategory)
 
@@ -101,1050 +173,250 @@ function App() {
         <header className="bg-white/80 backdrop-blur-md shadow-sm border-b border-violet-100 sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center">
-                <i className="fas fa-store text-white text-lg"></i>
-              </div>
+              <div className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center"><i className="fas fa-store text-white text-lg"></i></div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-violet-700 to-purple-600 bg-clip-text text-transparent">ShopBot</h1>
             </div>
-            <button onClick={() => setShowInstruction(false)} className="px-4 py-2 bg-violet-100 hover:bg-violet-200 text-violet-700 rounded-lg transition-all text-sm font-medium">
-              <i className="fas fa-arrow-left mr-2"></i>К каталогу
-            </button>
+            <button onClick={() => setShowInstruction(false)} className="px-4 py-2 bg-violet-100 hover:bg-violet-200 text-violet-700 rounded-lg transition-all text-sm font-medium"><i className="fas fa-arrow-left mr-2"></i>К каталогу</button>
           </div>
         </header>
 
         <div className="max-w-4xl mx-auto px-4 py-10">
-          {/* Title */}
           <div className="text-center mb-10">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl mb-4">
-              <i className="fas fa-book-open text-white text-2xl"></i>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              Полная <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">инструкция</span>
-            </h2>
-            <p className="text-gray-500 text-lg">От создания бота до запуска сайта с SEO-оптимизацией</p>
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl mb-4"><i className="fas fa-book-open text-white text-2xl"></i></div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Полная <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">инструкция</span></h2>
+            <p className="text-gray-500 text-lg">От создания бота до SEO-оптимизации через админ-панель</p>
           </div>
 
-          {/* Table of Contents */}
+          {/* Key update notice */}
+          <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border-2 border-green-200 mb-8">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center"><i className="fas fa-check text-white"></i></div>
+              <h3 className="text-lg font-bold text-green-800">SEO теперь через админ-панель!</h3>
+            </div>
+            <p className="text-green-700 text-sm mb-3">Больше не нужно редактировать код! Все SEO-настройки (title, description, keywords) задаются прямо в админ-панели:</p>
+            <ul className="space-y-2 text-sm text-green-700">
+              <li className="flex items-center gap-2"><i className="fas fa-check-circle text-green-500"></i><strong>Глобальные настройки сайта</strong> — вкладка «SEO сайта»</li>
+              <li className="flex items-center gap-2"><i className="fas fa-check-circle text-green-500"></i><strong>SEO для каждой категории</strong> — кнопка ✏️ у категории</li>
+              <li className="flex items-center gap-2"><i className="fas fa-check-circle text-green-500"></i><strong>SEO для каждого товара</strong> — блок «SEO» при добавлении/редактировании товара</li>
+            </ul>
+          </div>
+
+          {/* TOC */}
           <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 mb-8">
             <h3 className="text-lg font-semibold text-gray-900 mb-4"><i className="fas fa-list-ol text-violet-600 mr-2"></i>Содержание</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {[
                 { num: 1, title: 'Создание Telegram бота', icon: 'fa-robot' },
-                { num: 2, title: 'Получение ссылки на бота', icon: 'fa-link' },
-                { num: 3, title: 'Вход в админ-панель', icon: 'fa-lock' },
-                { num: 4, title: 'Настройка ссылки бота', icon: 'fa-cog' },
-                { num: 5, title: 'Добавление категорий', icon: 'fa-tags' },
-                { num: 6, title: 'Добавление товаров', icon: 'fa-plus-circle' },
-                { num: 7, title: 'Редактирование и удаление', icon: 'fa-edit' },
-                { num: 8, title: 'Защита и безопасность', icon: 'fa-shield-halved' },
-                { num: 9, title: 'Покупка домена', icon: 'fa-globe' },
-                { num: 10, title: 'Выбор хостинга / сервера', icon: 'fa-server' },
-                { num: 11, title: 'Загрузка сайта на сервер', icon: 'fa-cloud-arrow-up' },
-                { num: 12, title: 'Подключение домена и SSL', icon: 'fa-lock' },
-                { num: 13, title: 'SEO и семантическое ядро', icon: 'fa-magnifying-glass-chart' },
+                { num: 2, title: 'Вход в админ-панель', icon: 'fa-lock' },
+                { num: 3, title: 'Настройка ссылки бота', icon: 'fa-cog' },
+                { num: 4, title: 'Добавление категорий', icon: 'fa-tags' },
+                { num: 5, title: 'Добавление товаров + SEO', icon: 'fa-plus-circle' },
+                { num: 6, title: 'SEO для категорий', icon: 'fa-magnifying-glass-chart' },
+                { num: 7, title: 'Глобальные SEO-настройки', icon: 'fa-globe' },
+                { num: 8, title: 'Как работает SEO в поиске', icon: 'fa-diagram-project' },
+                { num: 9, title: 'Покупка домена и хостинг', icon: 'fa-server' },
+                { num: 10, title: 'Чек-лист запуска', icon: 'fa-clipboard-check' },
               ].map(item => (
                 <a key={item.num} href={`#step-${item.num}`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-violet-50 transition-all group">
                   <span className="w-8 h-8 bg-violet-100 group-hover:bg-violet-200 rounded-lg flex items-center justify-center text-violet-600 text-sm font-bold transition-all">{item.num}</span>
-                  <span className="text-gray-700 group-hover:text-violet-700 text-sm font-medium transition-all">
-                    <i className={`fas ${item.icon} mr-2 text-violet-400`}></i>{item.title}
-                  </span>
+                  <span className="text-gray-700 group-hover:text-violet-700 text-sm font-medium transition-all"><i className={`fas ${item.icon} mr-2 text-violet-400`}></i>{item.title}</span>
                 </a>
               ))}
             </div>
           </div>
 
-          {/* ===== STEP 1 ===== */}
+          {/* Steps */}
           <div id="step-1" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">1</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-robot text-violet-600 mr-2"></i>Создание Telegram бота</h3>
             </div>
             <div className="space-y-4 text-gray-600">
-              <p>Telegram бот — это ваш «продавец», через которого клиенты будут оформлять заказы.</p>
-              <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
-                <p className="font-semibold text-violet-800 mb-3"><i className="fas fa-list-check mr-2"></i>Пошаговая инструкция:</p>
-                <ol className="space-y-3 ml-1">
-                  {[
-                    'Откройте Telegram и найдите бота @BotFather',
-                    'Нажмите «Start» / «Запустить»',
-                    'Отправьте команду /newbot',
-                    'Введите имя бота (например: Мой Магазин)',
-                    'Введите username бота (должен заканчиваться на bot, например: my_shop_bot)',
-                    'BotFather пришлёт токен — сохраните его! Выглядит так: 1234567890:ABCdefGHIjklMNOpqrsTUVwxyz'
-                  ].map((step, i) => (
-                    <li key={i} className="flex gap-3">
-                      <span className="w-6 h-6 bg-violet-200 text-violet-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
-                      <span>{step}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-              <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
-                <p className="text-amber-800 text-sm"><i className="fas fa-lightbulb mr-2"></i><strong>Совет:</strong> Username бота должен быть уникальным. Если занят — попробуйте другой вариант.</p>
-              </div>
+              <ol className="space-y-3 ml-1">
+                {['Откройте Telegram, найдите @BotFather', 'Нажмите «Start»', 'Отправьте /newbot', 'Введите имя бота (Мой Магазин)', 'Введите username (my_shop_bot)', 'Сохраните токен'].map((s, i) => (
+                  <li key={i} className="flex gap-3"><span className="w-6 h-6 bg-violet-200 text-violet-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span><span>{s}</span></li>
+                ))}
+              </ol>
             </div>
           </div>
 
-          {/* ===== STEP 2 ===== */}
           <div id="step-2" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">2</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-link text-violet-600 mr-2"></i>Получение ссылки на бота</h3>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-lock text-violet-600 mr-2"></i>Вход в админ-панель</h3>
             </div>
-            <div className="space-y-4 text-gray-600">
-              <p>Ссылка на вашего бота формируется по шаблону:</p>
-              <div className="bg-gray-900 rounded-xl p-5 font-mono text-center"><p className="text-green-400 text-lg">https://t.me/<span className="text-yellow-300">ваш_username</span></p></div>
-              <p>Для удобного перехода с параметром:</p>
-              <div className="bg-gray-900 rounded-xl p-5 font-mono text-center"><p className="text-green-400 text-lg">https://t.me/my_shop_bot?start=buy</p></div>
-            </div>
+            <p className="text-gray-600 mb-3">Нажмите «⚙ Админ» → пароль: <code className="bg-violet-100 px-2 py-0.5 rounded text-violet-700 font-mono text-sm">admin123</code></p>
           </div>
 
-          {/* ===== STEP 3 ===== */}
           <div id="step-3" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">3</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-lock text-violet-600 mr-2"></i>Вход в админ-панель</h3>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-cog text-violet-600 mr-2"></i>Настройка ссылки бота</h3>
             </div>
-            <div className="space-y-4 text-gray-600">
-              <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
-                <ol className="space-y-3 ml-1">
-                  {[
-                    'Нажмите кнопку «⚙ Админ» в правом верхнем углу сайта',
-                    'Введите пароль: admin123',
-                    'Нажмите «Войти»'
-                  ].map((step, i) => (
-                    <li key={i} className="flex gap-3">
-                      <span className="w-6 h-6 bg-violet-200 text-violet-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
-                      <span>{step}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-              <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
-                <p className="text-amber-800 text-sm"><i className="fas fa-exclamation-triangle mr-2"></i><strong>Важно:</strong> Смените пароль по умолчанию на свой!</p>
-              </div>
-            </div>
+            <p className="text-gray-600">Вкладка «⚙️ Настройки» → вставьте ссылку <code className="bg-violet-100 px-2 py-0.5 rounded text-violet-700 font-mono text-sm">https://t.me/my_shop_bot?start=buy</code> → Сохранить</p>
           </div>
 
-          {/* ===== STEP 4 ===== */}
           <div id="step-4" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">4</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-cog text-violet-600 mr-2"></i>Настройка ссылки на Telegram бота</h3>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-tags text-violet-600 mr-2"></i>Добавление категорий</h3>
             </div>
-            <div className="space-y-4 text-gray-600">
-              <p>В админ-панели найдите блок «📨 Ссылка на Telegram бот», вставьте ссылку и нажмите «Сохранить».</p>
-              <div className="bg-gray-900 rounded-xl p-4 font-mono text-center"><p className="text-green-400">https://t.me/my_shop_bot?start=buy</p></div>
+            <p className="text-gray-600 mb-3">Вкладка «🏷 Категории» → введите название → «Добавить»</p>
+            <div className="bg-violet-50 rounded-xl p-4 border border-violet-100">
+              <p className="font-semibold text-violet-800 mb-2">SEO для категории:</p>
+              <p className="text-sm text-gray-600">Нажмите ✏️ рядом с категорией → заполните SEO-поля → Сохранить</p>
             </div>
           </div>
 
-          {/* ===== STEP 5 ===== */}
           <div id="step-5" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">5</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-tags text-violet-600 mr-2"></i>Добавление категорий</h3>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-plus-circle text-violet-600 mr-2"></i>Добавление товаров + SEO</h3>
             </div>
             <div className="space-y-4 text-gray-600">
-              <p>В блоке «🏷 Категории» введите название и нажмите «Добавить». Например: Обувь, Косметика, Игрушки.</p>
-              <div className="bg-blue-50 rounded-xl p-4 border border-blue-200">
-                <p className="text-blue-800 text-sm"><i className="fas fa-info-circle mr-2"></i>Категория «Все товары» — системная, её нельзя удалить.</p>
+              <p>Вкладка «📦 Товары» → заполните поля:</p>
+              <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
+                <p className="font-semibold text-violet-800 mb-3">Основные поля:</p>
+                <ul className="space-y-2 text-sm">
+                  <li>📦 <strong>Название</strong> — имя товара</li>
+                  <li>💰 <strong>Цена</strong> — в рублях</li>
+                  <li>🏷 <strong>Категория</strong> — из списка</li>
+                  <li>🖼 <strong>URL фото</strong> — ссылка на картинку</li>
+                  <li>📝 <strong>Описание</strong> — краткое описание</li>
+                </ul>
+              </div>
+              <div className="bg-green-50 rounded-xl p-5 border border-green-200">
+                <p className="font-semibold text-green-800 mb-3"><i className="fas fa-magnifying-glass-chart mr-2"></i>SEO-поля (для поиска):</p>
+                <ul className="space-y-2 text-sm">
+                  <li>🔹 <strong>SEO Title</strong> — заголовок для поисковика (50-60 символов). Пример: <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">Купить тг аккаунт | Telegram аккаунт — ShopBot</code></li>
+                  <li>🔹 <strong>SEO Description</strong> — описание для поисковика (150-160 символов). Пример: <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">Купить Telegram аккаунт быстро и безопасно. Готовые ТГ аккаунты с номером.</code></li>
+                  <li>🔹 <strong>SEO Keywords</strong> — ключевые слова через запятую. Пример: <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs break-all">купить тг аккаунт, телеграм аккаунт купить, тг аккаунт с номером</code></li>
+                </ul>
+                <div className="mt-3 bg-green-100 rounded p-3">
+                  <p className="text-xs text-green-800"><i className="fas fa-lightbulb mr-1"></i><strong>Автозаполнение:</strong> Если SEO-поля пустые — они заполнятся автоматически из названия и описания товара!</p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* ===== STEP 6 ===== */}
           <div id="step-6" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">6</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-plus-circle text-violet-600 mr-2"></i>Добавление товаров</h3>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-magnifying-glass-chart text-violet-600 mr-2"></i>SEO для категорий</h3>
             </div>
             <div className="space-y-4 text-gray-600">
+              <p>Каждая категория может иметь свои SEO-теги. Когда пользователь выбирает категорию — мета-теги сайта меняются автоматически!</p>
               <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
-                <div className="space-y-3">
-                  {[
-                    { icon: '📦', title: 'Название товара *', desc: 'Короткое и понятное имя' },
-                    { icon: '💰', title: 'Цена (₽) *', desc: 'Цена в рублях, только цифры' },
-                    { icon: '🏷', title: 'Категория *', desc: 'Выберите из списка' },
-                    { icon: '🖼', title: 'URL фото', desc: 'Прямая ссылка на изображение (необязательно)' },
-                    { icon: '📝', title: 'Описание', desc: 'Краткое описание (необязательно)' },
-                  ].map((field, i) => (
-                    <div key={i} className="flex gap-3 items-start">
-                      <span className="text-violet-600 font-bold shrink-0">{field.icon}</span>
-                      <div><strong>{field.title}</strong><p className="text-sm text-gray-500">{field.desc}</p></div>
-                    </div>
-                  ))}
-                </div>
+                <p className="font-semibold text-violet-800 mb-3">Как настроить:</p>
+                <ol className="space-y-2 text-sm">
+                  <li>1. Вкладка «🏷 Категории»</li>
+                  <li>2. Нажмите ✏️ рядом с категорией</li>
+                  <li>3. Заполните SEO Title, Description, Keywords</li>
+                  <li>4. Нажмите «Сохранить»</li>
+                </ol>
               </div>
-              <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
-                <p className="text-amber-800 text-sm"><i className="fas fa-image mr-2"></i><strong>Где взять фото?</strong> Загрузите на imgur.com или postimages.org и скопируйте прямую ссылку.</p>
+              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
+                <p className="text-green-800 text-sm"><i className="fas fa-check-circle mr-2"></i><strong>Результат:</strong> При выборе категории «Электроника» в каталоге — title и description сайта автоматически меняются на SEO-теги этой категории!</p>
               </div>
             </div>
           </div>
 
-          {/* ===== STEP 7 ===== */}
           <div id="step-7" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">7</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-edit text-violet-600 mr-2"></i>Редактирование и удаление</h3>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
-                <p className="font-semibold text-violet-800 mb-2"><i className="fas fa-pen mr-2"></i>Редактировать</p>
-                <p className="text-sm text-gray-600">Нажмите ✏️ рядом с товаром. Измените данные и нажмите «Сохранить».</p>
-              </div>
-              <div className="bg-red-50 rounded-xl p-5 border border-red-100">
-                <p className="font-semibold text-red-800 mb-2"><i className="fas fa-trash mr-2"></i>Удалить</p>
-                <p className="text-sm text-gray-600">Нажмите 🗑 рядом с товаром. Подтвердите удаление.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* ===== STEP 8 ===== */}
-          <div id="step-8" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">8</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-shield-halved text-violet-600 mr-2"></i>Защита и безопасность</h3>
-            </div>
-            <div className="space-y-3">
-              <div className="flex gap-4 items-start p-4 bg-green-50 rounded-xl border border-green-100">
-                <div className="w-10 h-10 bg-green-200 rounded-lg flex items-center justify-center shrink-0"><i className="fas fa-clock text-green-700"></i></div>
-                <div><p className="font-semibold text-green-800">Защита от накрутки кликов</p><p className="text-sm text-green-700">Максимум 10 нажатий «Купить» в минуту</p></div>
-              </div>
-              <div className="flex gap-4 items-start p-4 bg-blue-50 rounded-xl border border-blue-100">
-                <div className="w-10 h-10 bg-blue-200 rounded-lg flex items-center justify-center shrink-0"><i className="fas fa-lock text-blue-700"></i></div>
-                <div><p className="font-semibold text-blue-800">Пароль на админ-панель</p><p className="text-sm text-blue-700">Доступ к управлению защищён паролем</p></div>
-              </div>
-              <div className="flex gap-4 items-start p-4 bg-violet-50 rounded-xl border border-violet-100">
-                <div className="w-10 h-10 bg-violet-200 rounded-lg flex items-center justify-center shrink-0"><i className="fas fa-database text-violet-700"></i></div>
-                <div><p className="font-semibold text-violet-800">Локальное хранение</p><p className="text-sm text-violet-700">Данные сохраняются в localStorage браузера</p></div>
-              </div>
-              <div className="flex gap-4 items-start p-4 bg-amber-50 rounded-xl border border-amber-100">
-                <div className="w-10 h-10 bg-amber-200 rounded-lg flex items-center justify-center shrink-0"><i className="fas fa-server text-amber-700"></i></div>
-                <div><p className="font-semibold text-amber-800">Защита от DDoS</p><p className="text-sm text-amber-700">Подключите Cloudflare для CDN-защиты</p></div>
-              </div>
-            </div>
-          </div>
-
-          {/* ===== STEP 9: ПОКУПКА ДОМЕНА ===== */}
-          <div id="step-9" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">9</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-globe text-violet-600 mr-2"></i>Покупка домена</h3>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-globe text-violet-600 mr-2"></i>Глобальные SEO-настройки</h3>
             </div>
             <div className="space-y-4 text-gray-600">
-              <p>Домен — это адрес вашего сайта в интернете (например: <code className="bg-violet-100 px-2 py-0.5 rounded text-violet-700 font-mono text-sm">myshop.ru</code>).</p>
-
+              <p>Вкладка «🔍 SEO сайта» — настройки для главной страницы и всего сайта:</p>
               <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
-                <p className="font-semibold text-violet-800 mb-3"><i className="fas fa-store mr-2"></i>Где купить домен:</p>
-                <div className="space-y-3">
-                  {[
-                    { name: 'REG.RU', url: 'reg.ru', price: 'от 199₽/год (.ru)', note: 'Крупный российский регистратор' },
-                    { name: 'Beget', url: 'beget.com', price: 'от 299₽/год (.ru)', note: 'Хостинг + домен в одном месте' },
-                    { name: 'Namecheap', url: 'namecheap.com', price: 'от $8.88/год (.com)', note: 'Популярный международный регистратор' },
-                    { name: 'Cloudflare Registrar', url: 'cloudflare.com', price: 'по себестоимости', note: 'Домены без наценки + бесплатная защита' },
-                  ].map((reg, i) => (
-                    <div key={i} className="flex gap-3 items-start bg-white rounded-lg p-3 border border-violet-100">
-                      <span className="w-6 h-6 bg-violet-200 text-violet-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <strong className="text-violet-700">{reg.name}</strong>
-                          <span className="text-xs bg-violet-100 text-violet-600 px-2 py-0.5 rounded-full">{reg.url}</span>
-                        </div>
-                        <p className="text-sm text-gray-500">{reg.note}</p>
-                        <p className="text-sm font-semibold text-green-600">{reg.price}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
-                <p className="font-semibold text-violet-800 mb-3"><i className="fas fa-list-check mr-2"></i>Как купить:</p>
-                <ol className="space-y-3 ml-1">
-                  {[
-                    'Зайдите на сайт регистратора (например, reg.ru)',
-                    'В поисковой строке введите желаемое имя домена',
-                    'Проверьте доступность — если свободно, добавьте в корзину',
-                    'Зарегистрируйтесь / войдите в аккаунт',
-                    'Заполните данные (ФИО, email, телефон)',
-                    'Оплатите (карта, СБП, электронные кошельки)',
-                    'Домен появится в вашем личном кабинете'
-                  ].map((step, i) => (
-                    <li key={i} className="flex gap-3">
-                      <span className="w-6 h-6 bg-violet-200 text-violet-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
-                      <span>{step}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-
-              <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
-                <p className="text-amber-800 text-sm"><i className="fas fa-lightbulb mr-2"></i><strong>Советы по выбору домена:</strong></p>
-                <ul className="mt-2 space-y-1 text-sm text-amber-700 ml-5 list-disc">
-                  <li>Короткий и запоминающийся (до 15 символов)</li>
-                  <li>Легко пишется и произносится</li>
-                  <li>Содержит ключевое слово (shop, store, купить)</li>
-                  <li>Зона .ru — для России, .com — международный</li>
-                  <li>Избегайте дефисов и цифр</li>
+                <ul className="space-y-3 text-sm">
+                  <li><strong>Название сайта (Title)</strong> — отображается во вкладке браузера и в поиске</li>
+                  <li><strong>Описание сайта (Description)</strong> — текст под ссылкой в поиске</li>
+                  <li><strong>Ключевые слова (Keywords)</strong> — общие ключи для всего сайта</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          {/* ===== STEP 10: ХОСТИНГ ===== */}
-          <div id="step-10" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-8" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">10</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-server text-violet-600 mr-2"></i>Выбор хостинга / сервера</h3>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">8</span>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-diagram-project text-violet-600 mr-2"></i>Как работает SEO в поиске</h3>
             </div>
             <div className="space-y-4 text-gray-600">
-              <p>Хостинг — это место, где хранятся файлы вашего сайта. Наш сайт — статический (HTML/CSS/JS), поэтому подойдёт любой хостинг.</p>
-
-              <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
-                <p className="font-semibold text-violet-800 mb-3"><i className="fas fa-star mr-2"></i>Варианты хостинга:</p>
-                <div className="space-y-3">
-                  {[
-                    { name: '🆓 Бесплатные', items: ['GitHub Pages — бесплатно, идеально для статических сайтов', 'Netlify — бесплатный тариф, автодеплой из Git', 'Vercel — быстрый деплой, бесплатный SSL', 'Cloudflare Pages — бесплатно + CDN + защита от DDoS'] },
-                    { name: '💰 Платные (Россия)', items: ['Beget — от 0₽/мес (есть бесплатный тариф)', 'Timeweb — от 199₽/мес, простая панель', 'REG.RU Хостинг — от 180₽/мес'] },
-                    { name: '🌍 Платные (международные)', items: ['Hostinger — от $2.99/мес, быстрый', 'DigitalOcean — от $4/мес, VPS для продвинутых', 'AWS / Google Cloud — для масштабных проектов'] },
-                  ].map((group, i) => (
-                    <div key={i} className="bg-white rounded-lg p-4 border border-violet-100">
-                      <p className="font-semibold text-gray-800 mb-2">{group.name}</p>
-                      <ul className="space-y-1">
-                        {group.items.map((item, j) => (
-                          <li key={j} className="text-sm text-gray-600 flex gap-2"><i className="fas fa-check text-green-500 mt-1 shrink-0"></i>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+              <p>Каждый товар/категория имеет <strong>свои ключи</strong>. Поисковик показывает нужную страницу по нужному запросу:</p>
+              <div className="bg-gray-50 rounded-lg p-4 space-y-3">
+                <div className="flex items-center gap-2 flex-wrap text-sm">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-bold">🔍 «купить тг аккаунт»</span>
+                  <i className="fas fa-arrow-right text-gray-400"></i>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">✅ Страница ТГ аккаунтов</span>
+                </div>
+                <div className="flex items-center gap-2 flex-wrap text-sm">
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-bold">🔍 «купить номер физ»</span>
+                  <i className="fas fa-arrow-right text-gray-400"></i>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">✅ Страница Номера физ</span>
+                </div>
+                <div className="flex items-center gap-2 flex-wrap text-sm">
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">🔍 «купить наушники»</span>
+                  <i className="fas fa-arrow-right text-gray-400"></i>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">✅ Страница Электроника</span>
                 </div>
               </div>
-
-              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
-                <p className="text-green-800 text-sm"><i className="fas fa-check-circle mr-2"></i><strong>Рекомендация:</strong> Для начала используйте <strong>GitHub Pages</strong> или <strong>Netlify</strong> — бесплатно, быстро, с автоматическим SSL.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* ===== STEP 11: ЗАГРУЗКА НА СЕРВЕР ===== */}
-          <div id="step-11" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">11</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-cloud-arrow-up text-violet-600 mr-2"></i>Загрузка сайта на сервер</h3>
-            </div>
-            <div className="space-y-4 text-gray-600">
-
-              {/* Вариант A */}
-              <div className="bg-white rounded-xl p-5 border-2 border-violet-200">
-                <p className="font-bold text-violet-800 mb-3 text-lg">Вариант A: GitHub Pages (рекомендуется)</p>
-                <div className="bg-violet-50 rounded-lg p-4 mb-3">
-                  <p className="font-semibold text-violet-700 mb-2">Что нужно:</p>
-                  <ul className="text-sm text-violet-600 space-y-1">
-                    <li>• Аккаунт на <strong>github.com</strong> (бесплатно)</li>
-                    <li>• Файлы сайта (папка <code className="bg-violet-100 px-1.5 py-0.5 rounded font-mono text-xs">dist/</code> после сборки)</li>
-                  </ul>
-                </div>
-                <ol className="space-y-3 ml-1">
-                  {[
-                    'Зарегистрируйтесь на github.com',
-                    'Создайте новый репозиторий (кнопка «New»)',
-                    'Назовите его, например: my-shop-site',
-                    'Загрузите файлы из папки dist/ в репозиторий',
-                    'Зайдите в Settings → Pages',
-                    'В разделе «Source» выберите ветку main и папку / (root)',
-                    'Нажмите Save — через 1-2 минуты сайт будет доступен по адресу: https://ваш-username.github.io/my-shop-site/',
-                  ].map((step, i) => (
-                    <li key={i} className="flex gap-3">
-                      <span className="w-6 h-6 bg-violet-200 text-violet-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
-                      <span className="text-sm">{step}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-
-              {/* Вариант B */}
-              <div className="bg-white rounded-xl p-5 border-2 border-purple-200">
-                <p className="font-bold text-purple-800 mb-3 text-lg">Вариант B: Netlify (drag & drop)</p>
-                <ol className="space-y-3 ml-1">
-                  {[
-                    'Зарегистрируйтесь на netlify.com',
-                    'После входа вы увидите область для загрузки',
-                    'Перетащите папку dist/ прямо в браузер',
-                    'Через 30 секунд сайт будет доступен по ссылке вида: https://random-name-123.netlify.app',
-                    'Можно изменить имя сайта в настройках',
-                  ].map((step, i) => (
-                    <li key={i} className="flex gap-3">
-                      <span className="w-6 h-6 bg-purple-200 text-purple-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
-                      <span className="text-sm">{step}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-
-              {/* Вариант C */}
-              <div className="bg-white rounded-xl p-5 border-2 border-indigo-200">
-                <p className="font-bold text-indigo-800 mb-3 text-lg">Вариант C: Обычный хостинг (FTP)</p>
-                <ol className="space-y-3 ml-1">
-                  {[
-                    'Купите хостинг (Beget, Timeweb и т.д.)',
-                    'В панели хостинга найдите данные FTP (адрес, логин, пароль)',
-                    'Скачайте FTP-клиент: FileZilla (бесплатно)',
-                    'Подключитесь к серверу через FileZilla',
-                    'Загрузите файлы из папки dist/ в папку public_html/ на сервере',
-                    'Сайт доступен по вашему домену',
-                  ].map((step, i) => (
-                    <li key={i} className="flex gap-3">
-                      <span className="w-6 h-6 bg-indigo-200 text-indigo-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
-                      <span className="text-sm">{step}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-
-              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
-                <p className="text-green-800 text-sm"><i className="fas fa-check-circle mr-2"></i><strong>Важно:</strong> Загружать нужно содержимое папки <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">dist/</code>, а не саму папку!</p>
-              </div>
-            </div>
-          </div>
-
-          {/* ===== STEP 12: ДОМЕН + SSL ===== */}
-          <div id="step-12" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">12</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-lock text-violet-600 mr-2"></i>Подключение домена и SSL</h3>
-            </div>
-            <div className="space-y-4 text-gray-600">
-              <p>Теперь нужно привязать ваш купленный домен к сайту на хостинге.</p>
-
-              <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
-                <p className="font-semibold text-violet-800 mb-3"><i className="fas fa-link mr-2"></i>Подключение домена к GitHub Pages:</p>
-                <ol className="space-y-3 ml-1">
-                  {[
-                    'В репозитории: Settings → Pages → Custom domain',
-                    'Введите ваш домен: myshop.ru',
-                    'В личном кабинете регистратора домена найдите «DNS» или «Управление зоной»',
-                    'Добавьте A-записи, указывающие на IP GitHub:',
-                  ].map((step, i) => (
-                    <li key={i} className="flex gap-3">
-                      <span className="w-6 h-6 bg-violet-200 text-violet-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
-                      <span className="text-sm">{step}</span>
-                    </li>
-                  ))}
-                </ol>
-                <div className="bg-gray-900 rounded-lg p-4 mt-3 font-mono text-sm">
-                  <p className="text-green-400">A  @  185.199.108.153</p>
-                  <p className="text-green-400">A  @  185.199.109.153</p>
-                  <p className="text-green-400">A  @  185.199.110.153</p>
-                  <p className="text-green-400">A  @  185.199.111.153</p>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl p-5 border-2 border-purple-200">
-                <p className="font-semibold text-purple-800 mb-3"><i className="fas fa-link mr-2"></i>Подключение домена к Netlify:</p>
-                <ol className="space-y-3 ml-1">
-                  {[
-                    'Netlify → Domain settings → Add custom domain',
-                    'Введите ваш домен',
-                    'Netlify покажет нужные DNS-записи',
-                    'Пропишите их у регистратора домена',
-                    'Ожидайте 5-30 минут (иногда до 24 часов)',
-                  ].map((step, i) => (
-                    <li key={i} className="flex gap-3">
-                      <span className="w-6 h-6 bg-purple-200 text-purple-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
-                      <span className="text-sm">{step}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-
-              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
-                <p className="text-green-800 text-sm"><i className="fas fa-shield-halved mr-2"></i><strong>SSL (HTTPS)</strong> подключается автоматически на GitHub Pages и Netlify. На обычном хостинге — через Let's Encrypt (бесплатно) в панели хостинга.</p>
-              </div>
-
               <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
-                <p className="text-amber-800 text-sm"><i className="fas fa-clock mr-2"></i><strong>Время propagation:</strong> После изменения DNS-записей домен может работать не сразу. Подождите от 5 минут до 24 часов.</p>
+                <p className="text-amber-800 text-sm"><i className="fas fa-exclamation-triangle mr-2"></i><strong>Важно:</strong> Не смешивайте ключи! На странице про «тг аккаунт» не пишите «купить номер физ» — поисковик запутается.</p>
               </div>
             </div>
           </div>
 
-          {/* ===== STEP 13: SEO ===== */}
-          <div id="step-13" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-9" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">13</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-magnifying-glass-chart text-violet-600 mr-2"></i>SEO и семантическое ядро</h3>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">9</span>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-server text-violet-600 mr-2"></i>Покупка домена и хостинг</h3>
             </div>
-            <div className="space-y-5 text-gray-600">
-
-              {/* Что такое SEO */}
-              <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-xl p-5 border border-violet-100">
-                <p className="font-bold text-violet-800 text-lg mb-2">Что такое SEO?</p>
-                <p className="text-sm text-gray-600">SEO (Search Engine Optimization) — это оптимизация сайта для поисковых систем (Google, Яндекс). Цель — чтобы ваш сайт появлялся высоко в результатах поиска по нужным запросам.</p>
-              </div>
-
-              {/* Что такое семантическое ядро */}
-              <div className="bg-white rounded-xl p-5 border-2 border-violet-200">
-                <p className="font-bold text-violet-800 text-lg mb-3"><i className="fas fa-sitemap text-violet-600 mr-2"></i>Что такое семантическое ядро?</p>
-                <p className="text-sm text-gray-600 mb-4">
-                  <strong>Семантическое ядро</strong> — это полный набор ключевых слов и фраз, по которым ваш сайт должен находиться в поиске. Ключевые слова при поиске по сайту или в интернете называют <strong>поисковыми запросами</strong> или просто «ключами».
-                </p>
-                <div className="bg-violet-50 rounded-lg p-4">
-                  <p className="font-semibold text-violet-700 mb-2">Структура семантического ядра:</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center gap-2"><span className="w-3 h-3 bg-violet-600 rounded-full"></span><strong>Высокочастотные (ВЧ)</strong> — популярные запросы (1000+ запросов/мес)</div>
-                    <div className="flex items-center gap-2"><span className="w-3 h-3 bg-purple-500 rounded-full"></span><strong>Среднечастотные (СЧ)</strong> — 100-1000 запросов/мес</div>
-                    <div className="flex items-center gap-2"><span className="w-3 h-3 bg-fuchsia-400 rounded-full"></span><strong>Низкочастотные (НЧ)</strong> — до 100 запросов/мес</div>
-                    <div className="flex items-center gap-2"><span className="w-3 h-3 bg-pink-300 rounded-full"></span><strong>Микрочастотные</strong> — очень узкие запросы (1-10/мес)</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Пример семантического ядра */}
-              <div className="bg-white rounded-xl p-5 border-2 border-purple-200">
-                <p className="font-bold text-purple-800 text-lg mb-3"><i className="fas fa-table text-purple-600 mr-2"></i>Пример семантического ядра для магазина</p>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="bg-purple-50">
-                        <th className="text-left p-2 rounded-tl-lg">Тип</th>
-                        <th className="text-left p-2">Ключевой запрос</th>
-                        <th className="text-left p-2 rounded-tr-lg">Конкуренция</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-purple-50">
-                      {[
-                        { type: 'ВЧ', query: 'купить товары онлайн', comp: 'Высокая' },
-                        { type: 'ВЧ', query: 'интернет магазин', comp: 'Очень высокая' },
-                        { type: 'СЧ', query: 'купить тг аккаунт', comp: 'Средняя' },
-                        { type: 'СЧ', query: 'купить телеграм аккаунт', comp: 'Средняя' },
-                        { type: 'СЧ', query: 'купить номер физ', comp: 'Средняя' },
-                        { type: 'СЧ', query: 'магазин электроники онлайн', comp: 'Средняя' },
-                        { type: 'СЧ', query: 'купить беспроводные наушники', comp: 'Средняя' },
-                        { type: 'СЧ', query: 'купить смарт часы', comp: 'Средняя' },
-                        { type: 'НЧ', query: 'тг аккаунт с номером купить', comp: 'Низкая' },
-                        { type: 'НЧ', query: 'физический номер для телеграм', comp: 'Низкая' },
-                        { type: 'НЧ', query: 'купить худи оверсайз недорого', comp: 'Низкая' },
-                        { type: 'НЧ', query: 'кожаный чехол для телефона купить', comp: 'Низкая' },
-                        { type: 'НЧ', query: 'рюкзак с usb портом купить', comp: 'Низкая' },
-                        { type: 'НЧ', query: 'портативная bluetooth колонка', comp: 'Низкая' },
-                        { type: 'МЧ', query: 'купить telegram аккаунт с историей', comp: 'Очень низкая' },
-                        { type: 'МЧ', query: 'физ номер для telegram навсегда', comp: 'Очень низкая' },
-                        { type: 'МЧ', query: 'купить товары через telegram бот', comp: 'Очень низкая' },
-                        { type: 'МЧ', query: 'магазин с заказом через телеграм', comp: 'Очень низкая' },
-                      ].map((row, i) => (
-                        <tr key={i} className="hover:bg-purple-50/50">
-                          <td className="p-2"><span className={`px-2 py-0.5 rounded-full text-xs font-bold ${row.type === 'ВЧ' ? 'bg-violet-100 text-violet-700' : row.type === 'СЧ' ? 'bg-purple-100 text-purple-700' : row.type === 'НЧ' ? 'bg-fuchsia-100 text-fuchsia-700' : 'bg-pink-100 text-pink-700'}`}>{row.type}</span></td>
-                          <td className="p-2 font-mono text-xs">{row.query}</td>
-                          <td className="p-2 text-xs">{row.comp}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* Кластеры ключевых слов */}
-              <div className="bg-white rounded-xl p-5 border-2 border-blue-200">
-                <p className="font-bold text-blue-800 text-lg mb-3"><i className="fas fa-layer-group text-blue-600 mr-2"></i>Кластеризация: группируем ключи по товарам</p>
-                <p className="text-sm text-gray-600 mb-4">
-                  <strong>Кластер</strong> — это группа ключевых слов, объединённых одной темой. Каждый кластер = одна страница.
-                </p>
-
-                <div className="space-y-4">
-                  {/* Кластер 1 */}
-                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center text-sm font-bold">1</span>
-                      <p className="font-bold text-blue-800">Кластер: Telegram аккаунты</p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                      {[
-                        'купить тг аккаунт',
-                        'купить телеграм аккаунт',
-                        'telegram аккаунт купить',
-                        'тг аккаунт с номером',
-                        'готовый telegram аккаунт',
-                        'купить аккаунт телеграм',
-                        'тг аккаунт с историей',
-                        'telegram аккаунт премиум',
-                        'купить тг аккаунт недорого',
-                        'telegram аккаунт с подпиской',
-                      ].map((key, i) => (
-                        <div key={i} className="flex items-center gap-2 bg-white rounded px-3 py-1.5 border border-blue-100">
-                          <i className="fas fa-key text-blue-400 text-xs"></i>
-                          <span className="text-xs text-gray-700">{key}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-3 bg-blue-100 rounded p-2">
-                      <p className="text-xs text-blue-800"><strong>📄 Страница:</strong> /telegram-akkaunt</p>
-                      <p className="text-xs text-blue-800"><strong>🔍 Поисковый запрос:</strong> «купить тг аккаунт» → <strong className="text-green-700">покажется эта страница</strong></p>
-                    </div>
-                  </div>
-
-                  {/* Кластер 2 */}
-                  <div className="bg-purple-50 rounded-lg p-4 border border-purple-100">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="w-8 h-8 bg-purple-500 text-white rounded-lg flex items-center justify-center text-sm font-bold">2</span>
-                      <p className="font-bold text-purple-800">Кластер: Номера физ</p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                      {[
-                        'купить номер физ',
-                        'номер физ купить',
-                        'физический номер для телеграм',
-                        'купить физ номер тг',
-                        'физ номер для регистрации',
-                        'купить sim для телеграм',
-                        'номер физ для telegram',
-                        'физ номер без привязки',
-                        'купить физ номер навсегда',
-                        'физ номер с гарантией',
-                      ].map((key, i) => (
-                        <div key={i} className="flex items-center gap-2 bg-white rounded px-3 py-1.5 border border-purple-100">
-                          <i className="fas fa-key text-purple-400 text-xs"></i>
-                          <span className="text-xs text-gray-700">{key}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-3 bg-purple-100 rounded p-2">
-                      <p className="text-xs text-purple-800"><strong>📄 Страница:</strong> /nomer-fiz</p>
-                      <p className="text-xs text-purple-800"><strong>🔍 Поисковый запрос:</strong> «купить номер физ» → <strong className="text-green-700">покажется эта страница</strong></p>
-                    </div>
-                  </div>
-
-                  {/* Кластер 3 */}
-                  <div className="bg-green-50 rounded-lg p-4 border border-green-100">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="w-8 h-8 bg-green-500 text-white rounded-lg flex items-center justify-center text-sm font-bold">3</span>
-                      <p className="font-bold text-green-800">Кластер: Электроника</p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                      {[
-                        'купить беспроводные наушники',
-                        'bluetooth наушники купить',
-                        'наушники с шумоподавлением',
-                        'купить смарт часы',
-                        'портативная колонка bluetooth',
-                        'купить фитнес браслет',
-                      ].map((key, i) => (
-                        <div key={i} className="flex items-center gap-2 bg-white rounded px-3 py-1.5 border border-green-100">
-                          <i className="fas fa-key text-green-400 text-xs"></i>
-                          <span className="text-xs text-gray-700">{key}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-3 bg-green-100 rounded p-2">
-                      <p className="text-xs text-green-800"><strong>📄 Страница:</strong> /elektronika</p>
-                      <p className="text-xs text-green-800"><strong>🔍 Поисковый запрос:</strong> «купить беспроводные наушники» → <strong className="text-green-700">покажется эта страница</strong></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Визуальная схема */}
-              <div className="bg-white rounded-xl p-5 border-2 border-amber-200">
-                <p className="font-bold text-amber-800 text-lg mb-3"><i className="fas fa-diagram-project text-amber-600 mr-2"></i>Как это работает в поиске</p>
-                <div className="bg-gray-50 rounded-lg p-4 font-mono text-xs space-y-3">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-bold">🔍 Пользователь ищет: «купить тг аккаунт»</span>
-                    <i className="fas fa-arrow-right text-gray-400"></i>
-                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">✅ Google находит: /telegram-akkaunt</span>
-                  </div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-bold">🔍 Пользователь ищет: «купить номер физ»</span>
-                    <i className="fas fa-arrow-right text-gray-400"></i>
-                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">✅ Google находит: /nomer-fiz</span>
-                  </div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">🔍 Пользователь ищет: «купить наушники»</span>
-                    <i className="fas fa-arrow-right text-gray-400"></i>
-                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-bold">✅ Google находит: /elektronika</span>
-                  </div>
-                </div>
-                <div className="mt-3 bg-amber-50 rounded p-3 border border-amber-200">
-                  <p className="text-xs text-amber-800"><i className="fas fa-exclamation-triangle mr-1"></i><strong>Ошибка:</strong> Если на странице /telegram-akkaunt написать ключи «купить номер физ» — поисковик НЕ покажет эту страницу по запросу «купить номер физ», потому что контент страницы не соответствует запросу!</p>
-                </div>
-              </div>
-
-              {/* Практика: как прописать мета-теги */}
-              <div className="bg-white rounded-xl p-5 border-2 border-green-200">
-                <p className="font-bold text-green-800 text-lg mb-3"><i className="fas fa-code text-green-600 mr-2"></i>Практика: прописываем мета-теги для каждого товара</p>
-                <p className="text-sm text-gray-600 mb-4">
-                  В коде сайта нужно указать <strong>уникальные мета-теги</strong> для каждой страницы/категории. Вот как это делается:
-                </p>
-
-                <div className="space-y-4">
-                  {/* Пример 1: index.html для главной */}
-                  <div className="bg-gray-900 rounded-lg p-4">
-                    <p className="text-green-400 font-bold text-xs mb-2">📄 index.html — Главная страница (общие ключи)</p>
-                    <pre className="text-xs text-gray-300 overflow-x-auto whitespace-pre-wrap">{`<title>ShopBot — Магазин товаров | Купить онлайн через Telegram</title>
-<meta name="description" content="Каталог товаров с быстрой покупкой через Telegram бот. Электроника, одежда, аксессуары." />
-<meta name="keywords" content="купить товары онлайн, интернет магазин, telegram бот магазин, каталог товаров" />`}</pre>
-                  </div>
-
-                  {/* Пример 2: Страница Telegram аккаунтов */}
-                  <div className="bg-gray-900 rounded-lg p-4">
-                    <p className="text-blue-400 font-bold text-xs mb-2">📄 telegram-akkaunt.html — Страница ТГ аккаунтов</p>
-                    <pre className="text-xs text-gray-300 overflow-x-auto whitespace-pre-wrap">{`<title>Купить Telegram аккаунт | ТГ аккаунт с номером — ShopBot</title>
-<meta name="description" content="Купить Telegram аккаунт быстро и безопасно. Готовые ТГ аккаунты с номером, подтвержденные. Мгновенная доставка через бот." />
-<meta name="keywords" content="купить тг аккаунт, купить телеграм аккаунт, telegram аккаунт купить, тг аккаунт с номером, готовый telegram аккаунт, купить аккаунт телеграм" />
-
-<h1>Купить Telegram аккаунт</h1>
-<p>У нас вы можете купить тг аккаунт с гарантией...</p>`}</pre>
-                  </div>
-
-                  {/* Пример 3: Страница Номера физ */}
-                  <div className="bg-gray-900 rounded-lg p-4">
-                    <p className="text-purple-400 font-bold text-xs mb-2">📄 nomer-fiz.html — Страница Номера физ</p>
-                    <pre className="text-xs text-gray-300 overflow-x-auto whitespace-pre-wrap">{`<title>Купить номер физ | Физический номер для Telegram — ShopBot</title>
-<meta name="description" content="Купить номер физ для регистрации в Telegram. Физические номера SIM-карт с гарантией. Быстрая активация." />
-<meta name="keywords" content="купить номер физ, номер физ купить, физический номер для телеграм, купить физ номер тг, номер для telegram, физ номер sim" />
-
-<h1>Купить номер физ</h1>
-<p>Физический номер для Telegram с гарантией...</p>`}</pre>
-                  </div>
-                </div>
-
-                <div className="mt-4 bg-green-50 rounded-lg p-4 border border-green-200">
-                  <p className="text-green-800 text-sm"><i className="fas fa-check-circle mr-2"></i><strong>Результат:</strong></p>
-                  <ul className="mt-2 space-y-1 text-sm text-green-700 ml-5 list-disc">
-                    <li>Поиск «купить тг аккаунт» → Google покажет страницу <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">telegram-akkaunt.html</code></li>
-                    <li>Поиск «купить номер физ» → Google покажет страницу <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">nomer-fiz.html</code></li>
-                    <li>Поиск «купить товары онлайн» → Google покажет главную <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">index.html</code></li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Чек-лист для каждой страницы */}
-              <div className="bg-white rounded-xl p-5 border-2 border-violet-200">
-                <p className="font-bold text-violet-800 text-lg mb-3"><i className="fas fa-clipboard-list text-violet-600 mr-2"></i>Чек-лист SEO для каждой страницы</p>
-                <div className="space-y-2">
-                  {[
-                    { text: 'Title содержит главный ключ (в начале)', icon: 'fa-heading' },
-                    { text: 'Description 150-160 символов с ключом и призывом', icon: 'fa-align-left' },
-                    { text: 'Keywords — 5-10 ключевых фраз через запятую', icon: 'fa-key' },
-                    { text: 'H1 заголовок содержит основной ключ', icon: 'fa-h1' },
-                    { text: 'Текст страницы содержит ключи естественно (2-3 раза на 1000 слов)', icon: 'fa-paragraph' },
-                    { text: 'Alt у картинок описывает содержимое с ключом', icon: 'fa-image' },
-                    { text: 'URL страницы содержит ключ (человеко-понятный)', icon: 'fa-link' },
-                    { text: 'Внутренние ссылки на другие релевантные страницы', icon: 'fa-code-branch' },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3 bg-violet-50 rounded-lg p-2">
-                      <i className={`fas ${item.icon} text-violet-500 w-5 text-center`}></i>
-                      <span className="text-sm text-gray-700">{item.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Как собрать семантическое ядро */}
-              <div className="bg-white rounded-xl p-5 border-2 border-indigo-200">
-                <p className="font-bold text-indigo-800 text-lg mb-3"><i className="fas fa-magnifying-glass text-indigo-600 mr-2"></i>Как собрать семантическое ядро</p>
-                <div className="space-y-3">
-                  {[
-                    { tool: 'Яндекс.Вордстат', url: 'wordstat.yandex.ru', desc: 'Показывает частотность запросов в Яндексе. Вводите слово — видите сколько раз искали за месяц.' },
-                    { tool: 'Google Keyword Planner', url: 'ads.google.com', desc: 'Бесплатный инструмент от Google для подбора ключевых слов. Нужен аккаунт Google Ads.' },
-                    { tool: 'Key Collector', url: 'keycollector.ru', desc: 'Программа для автоматического сбора ключевых слов. Платная, но очень мощная.' },
-                    { tool: 'Megaindex', url: 'megaindex.com', desc: 'Анализ конкурентов, подбор ключей, проверка позиций.' },
-                    { tool: 'Serpstat', url: 'serpstat.com', desc: 'Комплексный SEO-инструмент: ключи, аналитика, аудит.' },
-                    { tool: 'Бесплатные альтернативы', url: '', desc: 'Google Trends, Ubersuggest (бесплатная версия), AnswerThePublic, Keyword.io' },
-                  ].map((item, i) => (
-                    <div key={i} className="flex gap-3 items-start bg-indigo-50 rounded-lg p-3">
-                      <span className="w-6 h-6 bg-indigo-200 text-indigo-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
-                      <div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <strong className="text-indigo-700">{item.tool}</strong>
-                          {item.url && <span className="text-xs bg-indigo-100 text-indigo-600 px-2 py-0.5 rounded-full">{item.url}</span>}
-                        </div>
-                        <p className="text-sm text-gray-600">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Пошаговый сбор */}
+            <div className="space-y-4 text-gray-600">
               <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
-                <p className="font-bold text-violet-800 text-lg mb-3"><i className="fas fa-list-ol text-violet-600 mr-2"></i>Пошаговый сбор семантического ядра:</p>
-                <ol className="space-y-3 ml-1">
-                  {[
-                    'Выпишите все товары и услуги вашего магазина',
-                    'Для каждого товара подберите 5-10 вариантов запросов (как люди ищут)',
-                    'Проверьте частотность в Яндекс.Вордстат',
-                    'Добавьте синонимы и связанные запросы',
-                    'Разделите ключи по группам (кластерам): каждый товар/категория — отдельный кластер',
-                    'Отфильтруйте «мусор» — запросы, не относящиеся к вашему магазину',
-                    'Приоритизируйте: начните с низкочастотных (меньше конкуренция)',
-                    'Составьте итоговую таблицу семантического ядра',
-                  ].map((step, i) => (
-                    <li key={i} className="flex gap-3">
-                      <span className="w-6 h-6 bg-violet-200 text-violet-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
-                      <span className="text-sm">{step}</span>
-                    </li>
-                  ))}
-                </ol>
+                <p className="font-semibold text-violet-800 mb-3">Регистраторы доменов:</p>
+                <ul className="space-y-2 text-sm">
+                  <li>• <strong>REG.RU</strong> — от 199₽/год (.ru)</li>
+                  <li>• <strong>Beget</strong> — хостинг + домен</li>
+                  <li>• <strong>Namecheap</strong> — от $8.88/год (.com)</li>
+                  <li>• <strong>Cloudflare</strong> — по себестоимости + защита</li>
+                </ul>
               </div>
-
-              {/* Где размещать ключи */}
-              <div className="bg-white rounded-xl p-5 border-2 border-green-200">
-                <p className="font-bold text-green-800 text-lg mb-3"><i className="fas fa-map-pin text-green-600 mr-2"></i>Где размещать ключевые слова на сайте</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {[
-                    { place: '<title>', importance: 'Критически важно', desc: 'Заголовок вкладки браузера. 50-60 символов. Главный ключ — в начале.' },
-                    { place: 'meta description', importance: 'Очень важно', desc: 'Описание в поиске. 150-160 символов. Включите ключ + призыв к действию.' },
-                    { place: 'meta keywords', importance: 'Менее важно', desc: 'Список ключевых слов через запятую. Google не учитывает, Яндекс — частично.' },
-                    { place: 'H1 заголовок', importance: 'Очень важно', desc: 'Главный заголовок страницы. Один на страницу. Содержит основной ключ.' },
-                    { place: 'Текст страницы', importance: 'Важно', desc: 'Естественное вхождение ключей в описания товаров, категории.' },
-                    { place: 'Alt у изображений', importance: 'Важно', desc: 'Описание картинок. Используйте ключевые слова для фото товаров.' },
-                    { place: 'URL страницы', importance: 'Важно', desc: 'Человеко-понятный URL с ключом: /kupit-naushniki' },
-                    { place: 'Open Graph теги', importance: 'Для соцсетей', desc: 'Заголовки для красивого отображения при шаринге в соцсетях.' },
-                  ].map((item, i) => (
-                    <div key={i} className="bg-green-50 rounded-lg p-3 border border-green-100">
-                      <div className="flex items-center gap-2 mb-1">
-                        <code className="bg-green-200 text-green-800 px-2 py-0.5 rounded text-xs font-bold">{item.place}</code>
-                      </div>
-                      <p className="text-xs font-semibold text-green-700 mb-1">{item.importance}</p>
-                      <p className="text-xs text-gray-600">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Примеры мета-тегов */}
-              <div className="bg-gray-900 rounded-xl p-5">
-                <p className="font-bold text-white text-sm mb-3"><i className="fas fa-code text-green-400 mr-2"></i>Примеры мета-тегов для нашего сайта:</p>
-                <div className="space-y-3 font-mono text-xs">
-                  <div>
-                    <p className="text-gray-400 mb-1"># Title (заголовок вкладки)</p>
-                    <p className="text-green-400">{'<title>ShopBot — Магазин товаров | Купить онлайн через Telegram</title>'}</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 mb-1"># Description (описание в поиске)</p>
-                    <p className="text-green-400 break-all">{'<meta name="description" content="ShopBot — каталог товаров с быстрой покупкой через Telegram. Электроника, одежда, аксессуары. Лучшие цены, мгновенный заказ." />'}</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 mb-1"># Keywords (ключевые слова)</p>
-                    <p className="text-green-400 break-all">{'<meta name="keywords" content="купить товары онлайн, интернет магазин, telegram бот магазин, каталог товаров, заказать онлайн, магазин электроники" />'}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* ПРИНЦИП: разные ключи для разных товаров */}
-              <div className="bg-gradient-to-br from-indigo-50 to-violet-50 rounded-xl p-5 border-2 border-indigo-200">
-                <p className="font-bold text-indigo-800 text-lg mb-3"><i className="fas fa-bullseye text-indigo-600 mr-2"></i>Главный принцип SEO: разные товары = разные ключи</p>
-                <p className="text-sm text-gray-600 mb-4">
-                  Каждая страница/товар должна иметь <strong>свой набор ключевых слов</strong>. Когда человек ищет «купить тг аккаунт» — он должен найти страницу с Telegram аккаунтами. Когда ищет «купить номер физ» — страницу с номерами.
-                </p>
-                
-                <div className="bg-white rounded-lg p-4 border border-indigo-100 mb-4">
-                  <p className="font-semibold text-indigo-700 mb-3">📌 Пример распределения ключей по товарам:</p>
-                  
-                  <div className="space-y-4">
-                    {/* Товар 1: ТГ аккаунт */}
-                    <div className="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
-                      <p className="font-bold text-blue-800 mb-2">🔹 Товар: Telegram аккаунт</p>
-                      <div className="space-y-2 text-sm">
-                        <div>
-                          <p className="font-semibold text-blue-700">Title:</p>
-                          <p className="text-gray-700 font-mono text-xs bg-blue-100 p-2 rounded">Купить Telegram аккаунт | ТГ аккаунт с гарантией — ShopBot</p>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-blue-700">Description:</p>
-                          <p className="text-gray-700 font-mono text-xs bg-blue-100 p-2 rounded">Купить Telegram аккаунт быстро и безопасно. Готовые ТГ аккаунты с номером, подтвержденные. Мгновенная доставка через бот.</p>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-blue-700">Keywords:</p>
-                          <p className="text-gray-700 font-mono text-xs bg-blue-100 p-2 rounded break-all">купить тг аккаунт, купить телеграм аккаунт, telegram аккаунт купить, тг аккаунт с номером, готовый telegram аккаунт, купить аккаунт телеграм, telegram account</p>
-                        </div>
-                      </div>
-                      <div className="mt-3 bg-blue-100 rounded p-2">
-                        <p className="text-xs text-blue-800"><strong>✅ Результат:</strong> При поиске «купить тг аккаунт» → Google/Яндекс покажет эту страницу</p>
-                      </div>
-                    </div>
-
-                    {/* Товар 2: Номер физ */}
-                    <div className="bg-purple-50 rounded-lg p-4 border-l-4 border-purple-500">
-                      <p className="font-bold text-purple-800 mb-2">🔹 Товар: Номер физ (физический номер)</p>
-                      <div className="space-y-2 text-sm">
-                        <div>
-                          <p className="font-semibold text-purple-700">Title:</p>
-                          <p className="text-gray-700 font-mono text-xs bg-purple-100 p-2 rounded">Купить номер физ | Физический номер для Telegram — ShopBot</p>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-purple-700">Description:</p>
-                          <p className="text-gray-700 font-mono text-xs bg-purple-100 p-2 rounded">Купить номер физ для регистрации в Telegram. Физические номера SIM-карт с гарантией. Быстрая активация, поддержка 24/7.</p>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-purple-700">Keywords:</p>
-                          <p className="text-gray-700 font-mono text-xs bg-purple-100 p-2 rounded break-all">купить номер физ, номер физ купить, физический номер для телеграм, купить физ номер тг, номер для telegram, физ номер sim, купить sim для телеграм</p>
-                        </div>
-                      </div>
-                      <div className="mt-3 bg-purple-100 rounded p-2">
-                        <p className="text-xs text-purple-800"><strong>✅ Результат:</strong> При поиске «купить номер физ» → покажется эта страница</p>
-                      </div>
-                    </div>
-
-                    {/* Товар 3: Электроника */}
-                    <div className="bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
-                      <p className="font-bold text-green-800 mb-2">🔹 Товар: Беспроводные наушники</p>
-                      <div className="space-y-2 text-sm">
-                        <div>
-                          <p className="font-semibold text-green-700">Title:</p>
-                          <p className="text-gray-700 font-mono text-xs bg-green-100 p-2 rounded">Купить беспроводные наушники | Bluetooth наушники с шумоподавлением</p>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-green-700">Keywords:</p>
-                          <p className="text-gray-700 font-mono text-xs bg-green-100 p-2 rounded break-all">купить беспроводные наушники, bluetooth наушники, наушники с шумоподавлением, беспроводные наушники купить, наушники bluetooth</p>
-                        </div>
-                      </div>
-                      <div className="mt-3 bg-green-100 rounded p-2">
-                        <p className="text-xs text-green-800"><strong>✅ Результат:</strong> При поиске «купить беспроводные наушники» → эта страница</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
-                  <p className="text-amber-800 text-sm"><i className="fas fa-lightbulb mr-2"></i><strong>Важно:</strong> Не смешивайте ключи! Если на странице про «тг аккаунт» написать «купить номер физ» — поисковик запутается и не покажет страницу ни по одному запросу.</p>
-                </div>
-              </div>
-
-              {/* Как это работает технически */}
-              <div className="bg-white rounded-xl p-5 border-2 border-violet-200">
-                <p className="font-bold text-violet-800 text-lg mb-3"><i className="fas fa-cogs text-violet-600 mr-2"></i>Как реализовать на практике</p>
-                <div className="space-y-4">
-                  <div className="bg-violet-50 rounded-lg p-4">
-                    <p className="font-semibold text-violet-700 mb-2">Вариант 1: Отдельные страницы для каждого товара</p>
-                    <p className="text-sm text-gray-600 mb-2">Каждый товар = отдельная страница со своими мета-тегами:</p>
-                    <div className="font-mono text-xs bg-white p-3 rounded border border-violet-100 space-y-1">
-                      <p className="text-gray-600">/telegram-akkaunt → title: «Купить Telegram аккаунт...»</p>
-                      <p className="text-gray-600">/nomer-fiz → title: «Купить номер физ...»</p>
-                      <p className="text-gray-600">/naushniki → title: «Купить беспроводные наушники...»</p>
-                    </div>
-                  </div>
-
-                  <div className="bg-purple-50 rounded-lg p-4">
-                    <p className="font-semibold text-purple-700 mb-2">Вариант 2: Динамические мета-теги (React)</p>
-                    <p className="text-sm text-gray-600 mb-2">Меняйте мета-теги в зависимости от выбранного товара/категории:</p>
-                    <div className="font-mono text-xs bg-white p-3 rounded border border-purple-100">
-                      <p className="text-gray-600">{'// В компоненте товара:'}</p>
-                      <p className="text-gray-600">{'useEffect(() => {'}</p>
-                      <p className="text-gray-600">{'  document.title = `Купить ${product.name} | ${product.category}`;'}</p>
-                      <p className="text-gray-600">{'  document.querySelector("meta[name=description]")'}</p>
-                      <p className="text-gray-600">{'    .setAttribute("content", product.description);'}</p>
-                      <p className="text-gray-600">{'}'}</p>
-                    </div>
-                  </div>
-
-                  <div className="bg-green-50 rounded-lg p-4">
-                    <p className="font-semibold text-green-700 mb-2">Вариант 3: Страницы категорий</p>
-                    <p className="text-sm text-gray-600 mb-2">Создайте отдельные страницы для каждой категории:</p>
-                    <div className="font-mono text-xs bg-white p-3 rounded border border-green-100 space-y-1">
-                      <p className="text-gray-600">/category/telegram → «Купить Telegram аккаунты, номера»</p>
-                      <p className="text-gray-600">/category/electronics → «Купить электронику онлайн»</p>
-                      <p className="text-gray-600">/category/clothing → «Купить одежду, худи, футболки»</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Дополнительные SEO советы */}
-              <div className="bg-white rounded-xl p-5 border-2 border-amber-200">
-                <p className="font-bold text-amber-800 text-lg mb-3"><i className="fas fa-lightbulb text-amber-600 mr-2"></i>Дополнительные SEO-советы</p>
-                <div className="space-y-3">
-                  {[
-                    { icon: 'fa-robot', title: 'Добавьте сайт в Яндекс.Вебмастер и Google Search Console', desc: 'Это ускорит индексацию. Отправьте sitemap.xml для быстрого сканирования.' },
-                    { icon: 'fa-file-lines', title: 'Создайте sitemap.xml', desc: 'Файл со списком всех страниц сайта. Помогает поисковикам найти все страницы.' },
-                    { icon: 'fa-file-contract', title: 'Создайте robots.txt', desc: 'Файл-инструкция для поисковых ботов. Указывает какие страницы можно индексировать.' },
-                    { icon: 'fa-bolt', title: 'Скорость загрузки', desc: 'Оптимизируйте изображения, минифицируйте CSS/JS. Быстрые сайты ранжируются выше.' },
-                    { icon: 'fa-mobile-screen', title: 'Мобильная версия', desc: 'Google и Яндекс учитывают мобильную адаптацию. Наш сайт полностью адаптивен!' },
-                    { icon: 'fa-link', title: 'Внутренняя перелинковка', desc: 'Связывайте страницы между собой. Категории → товары, товары → похожие.' },
-                    { icon: 'fa-pen-fancy', title: 'Контент', desc: 'Добавьте блог/статьи. Уникальный контент привлекает поисковый трафик.' },
-                    { icon: 'fa-chart-line', title: 'Аналитика', desc: 'Подключите Яндекс.Метрику и Google Analytics для отслеживания трафика.' },
-                  ].map((tip, i) => (
-                    <div key={i} className="flex gap-3 items-start">
-                      <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center shrink-0">
-                        <i className={`fas ${tip.icon} text-amber-600 text-sm`}></i>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-800 text-sm">{tip.title}</p>
-                        <p className="text-xs text-gray-500">{tip.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Итоговая таблица действий */}
-              <div className="bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl p-5 text-white">
-                <p className="font-bold text-lg mb-3"><i className="fas fa-clipboard-check mr-2"></i>Чек-лист запуска сайта</p>
-                <div className="space-y-2">
-                  {[
-                    '✅ Создан Telegram бот через @BotFather',
-                    '✅ Куплен домен (reg.ru / namecheap / cloudflare)',
-                    '✅ Выбран хостинг (GitHub Pages / Netlify / Beget)',
-                    '✅ Сайт загружен на сервер (папка dist/)',
-                    '✅ Домен привязан к хостингу (DNS-записи)',
-                    '✅ SSL-сертификат активен (https://)',
-                    '✅ Ссылка на бота настроена в админ-панели',
-                    '✅ Товары и категории добавлены',
-                    '✅ Мета-теги (title, description, keywords) прописаны',
-                    '✅ Сайт добавлен в Яндекс.Вебмастер',
-                    '✅ Сайт добавлен в Google Search Console',
-                    '✅ Подключена Яндекс.Метрика / Google Analytics',
-                    '✅ Проверена мобильная версия',
-                    '✅ Проверена скорость загрузки (PageSpeed Insights)',
-                  ].map((item, i) => (
-                    <p key={i} className="text-sm text-white/90">{item}</p>
-                  ))}
-                </div>
+              <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
+                <p className="font-semibold text-violet-800 mb-3">Хостинг (бесплатно):</p>
+                <ul className="space-y-2 text-sm">
+                  <li>• <strong>GitHub Pages</strong> — бесплатно, идеально для статических сайтов</li>
+                  <li>• <strong>Netlify</strong> — drag & drop загрузка</li>
+                  <li>• <strong>Vercel</strong> — быстрый деплой</li>
+                  <li>• <strong>Cloudflare Pages</strong> — бесплатно + CDN + DDoS защита</li>
+                </ul>
               </div>
             </div>
           </div>
 
-          {/* Quick Start */}
-          <div className="bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl p-6 md:p-8 text-white mb-8">
-            <h3 className="text-xl font-bold mb-4"><i className="fas fa-rocket mr-2"></i>Быстрый старт — 5 минут</h3>
-            <div className="space-y-3">
+          <div id="step-10" className="bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl p-6 md:p-8 text-white mb-8">
+            <h3 className="text-xl font-bold mb-4"><i className="fas fa-clipboard-check mr-2"></i>Чек-лист запуска</h3>
+            <div className="space-y-2">
               {[
-                'Создайте бота через @BotFather в Telegram',
-                'Скопируйте ссылку: https://t.me/ваш_bot',
-                'Откройте сайт → нажмите «Админ» → пароль: admin123',
-                'Вставьте ссылку на бота → Сохранить',
-                'Добавьте категории и товары',
-                'Готово! Клиенты видят каталог и жмут «Купить»'
-              ].map((step, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <span className="w-7 h-7 bg-white/20 rounded-full flex items-center justify-center text-sm font-bold shrink-0">{i + 1}</span>
-                  <span className="text-white/90">{step}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* FAQ */}
-          <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-8">
-            <h3 className="text-xl font-bold text-gray-900 mb-5"><i className="fas fa-circle-question text-violet-600 mr-2"></i>Частые вопросы</h3>
-            <div className="space-y-4">
-              {[
-                { q: 'Что увидит клиент в Telegram после нажатия «Купить»?', a: 'Клиент перейдёт в ваш бот. Бот получит сообщение с названием и ценой товара. Дальше бот обрабатывает заказ.' },
-                { q: 'Сколько стоит запустить сайт?', a: 'Минимум: домен .ru (~199₽/год) + бесплатный хостинг (GitHub Pages / Netlify). Итого: от 17₽/мес!' },
-                { q: 'Нужен ли программист?', a: 'Нет! Весь сайт настраивается через админ-панель. Загрузка на хостинг — перетаскивание папки.' },
-                { q: 'Как продвигать сайт в поиске?', a: 'Соберите семантическое ядро, пропишите мета-теги, добавьте в Вебмастер, создавайте уникальный контент.' },
-                { q: 'Как защитить от DDoS?', a: 'Подключите Cloudflare (бесплатный тариф). Он фильтрует вредоносный трафик и ускоряет загрузку.' },
-              ].map((faq, i) => (
-                <div key={i} className="border-b border-violet-50 pb-4 last:border-0 last:pb-0">
-                  <p className="font-semibold text-gray-900 mb-1"><i className="fas fa-question-circle text-violet-400 mr-2 text-sm"></i>{faq.q}</p>
-                  <p className="text-sm text-gray-500 ml-6">{faq.a}</p>
-                </div>
-              ))}
+                '✅ Создан Telegram бот через @BotFather',
+                '✅ Куплен домен',
+                '✅ Выбран хостинг (GitHub Pages / Netlify)',
+                '✅ Сайт загружен на сервер',
+                '✅ Домен привязан + SSL активен',
+                '✅ Ссылка на бота настроена в админке',
+                '✅ Товары и категории добавлены',
+                '✅ SEO-теги прописаны для каждого товара',
+                '✅ SEO-теги прописаны для каждой категории',
+                '✅ Глобальные SEO-настройки заполнены',
+                '✅ Сайт добавлен в Яндекс.Вебмастер',
+                '✅ Сайт добавлен в Google Search Console',
+              ].map((item, i) => <p key={i} className="text-sm text-white/90">{item}</p>)}
             </div>
           </div>
 
           <div className="text-center pb-8">
-            <button onClick={() => setShowInstruction(false)} className="px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white rounded-xl font-medium transition-all shadow-lg shadow-violet-200 hover:shadow-xl hover:shadow-violet-300">
-              <i className="fas fa-arrow-left mr-2"></i>Вернуться к каталогу
-            </button>
+            <button onClick={() => setShowInstruction(false)} className="px-8 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white rounded-xl font-medium transition-all shadow-lg shadow-violet-200"><i className="fas fa-arrow-left mr-2"></i>Вернуться к каталогу</button>
           </div>
         </div>
       </div>
@@ -1157,16 +429,12 @@ function App() {
       <header className="bg-white/80 backdrop-blur-md shadow-sm border-b border-violet-100 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center">
-              <i className="fas fa-store text-white text-lg"></i>
-            </div>
+            <div className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center"><i className="fas fa-store text-white text-lg"></i></div>
             <h1 className="text-2xl font-bold bg-gradient-to-r from-violet-700 to-purple-600 bg-clip-text text-transparent">ShopBot</h1>
           </div>
           <div className="flex items-center gap-3">
             {isAdmin && <span className="text-sm text-green-600 bg-green-50 px-3 py-1 rounded-full"><i className="fas fa-check-circle mr-1"></i>Админ</span>}
-            <button onClick={() => { if (isAdmin) { setShowAdmin(!showAdmin) } else { setShowPasswordModal(true) } }} className="px-4 py-2 bg-violet-100 hover:bg-violet-200 text-violet-700 rounded-lg transition-all text-sm font-medium">
-              <i className="fas fa-cog mr-2"></i>{isAdmin ? 'Панель' : 'Админ'}
-            </button>
+            <button onClick={() => { if (isAdmin) { setShowAdmin(!showAdmin) } else { setShowPasswordModal(true) } }} className="px-4 py-2 bg-violet-100 hover:bg-violet-200 text-violet-700 rounded-lg transition-all text-sm font-medium"><i className="fas fa-cog mr-2"></i>{isAdmin ? 'Панель' : 'Админ'}</button>
           </div>
         </div>
       </header>
@@ -1174,15 +442,13 @@ function App() {
       {!showAdmin && (
         <section className="py-12 px-4">
           <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Наши <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">товары</span>
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Наши <span className="bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">товары</span></h2>
             <p className="text-gray-500 text-lg max-w-2xl mx-auto">Выберите товар и нажмите «Купить» — заказ оформляется через Telegram бот мгновенно</p>
           </div>
         </section>
       )}
 
-      {/* Admin Panel */}
+      {/* ===== ADMIN PANEL ===== */}
       {showAdmin && isAdmin && (
         <section className="py-8 px-4">
           <div className="max-w-5xl mx-auto">
@@ -1194,82 +460,232 @@ function App() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4"><i className="fab fa-telegram text-violet-600 mr-2"></i>Ссылка на Telegram бот</h3>
-              <div className="flex gap-3 flex-wrap">
-                <input type="text" value={botLink} onChange={(e) => { setBotLink(e.target.value); setSavedBotLink(false) }} placeholder="https://t.me/your_bot?start=buy" className="flex-1 min-w-[200px] px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
-                <button onClick={() => { localStorage.setItem('shop_bot_link', botLink); setSavedBotLink(true); setTimeout(() => setSavedBotLink(false), 2000) }} className={`px-6 py-2 rounded-lg transition-all ${savedBotLink ? 'bg-green-500 text-white' : 'bg-violet-600 hover:bg-violet-700 text-white'}`}>
-                  {savedBotLink ? <><i className="fas fa-check mr-1"></i>Сохранено!</> : 'Сохранить'}
+            {/* Tabs */}
+            <div className="flex flex-wrap gap-2 mb-6 bg-white rounded-xl p-2 border border-violet-100">
+              {[
+                { id: 'products' as const, label: '📦 Товары', icon: 'fa-box' },
+                { id: 'categories' as const, label: '🏷 Категории', icon: 'fa-tags' },
+                { id: 'seo' as const, label: '🔍 SEO сайта', icon: 'fa-magnifying-glass-chart' },
+                { id: 'settings' as const, label: '⚙️ Настройки', icon: 'fa-cog' },
+              ].map(tab => (
+                <button key={tab.id} onClick={() => setAdminTab(tab.id)} className={`flex-1 min-w-[120px] px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${adminTab === tab.id ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-md' : 'text-gray-600 hover:bg-violet-50'}`}>
+                  <i className={`fas ${tab.icon} mr-1.5`}></i>{tab.label}
                 </button>
-              </div>
+              ))}
             </div>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4"><i className="fas fa-tags text-violet-600 mr-2"></i>Категории</h3>
-              <div className="flex gap-3 mb-4 flex-wrap">
-                <input type="text" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} placeholder="Название категории" className="flex-1 min-w-[200px] px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
-                <button onClick={handleAddCategory} className="px-6 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg transition-all"><i className="fas fa-plus mr-1"></i>Добавить</button>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {categories.map(cat => (
-                  <span key={cat.id} className="inline-flex items-center gap-2 px-3 py-1 bg-violet-50 text-violet-700 rounded-full text-sm">
-                    {cat.name}
-                    {cat.id !== '1' && <button onClick={() => handleDeleteCategory(cat.id)} className="text-red-400 hover:text-red-600"><i className="fas fa-times"></i></button>}
-                  </span>
-                ))}
-              </div>
-            </div>
+            {/* TAB: Products */}
+            {adminTab === 'products' && (
+              <>
+                <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 mb-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4"><i className="fas fa-plus-circle text-violet-600 mr-2"></i>Добавить товар</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" value={newProduct.name} onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })} placeholder="Название товара *" className="px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+                    <input type="number" value={newProduct.price} onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })} placeholder="Цена (₽) *" className="px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+                    <select value={newProduct.category} onChange={(e) => setNewProduct({ ...newProduct, category: e.target.value })} className="px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
+                      <option value="">Выберите категорию *</option>
+                      {categories.filter(c => c.name !== 'Все товары').map(cat => <option key={cat.id} value={cat.name}>{cat.name}</option>)}
+                    </select>
+                    <input type="text" value={newProduct.image} onChange={(e) => setNewProduct({ ...newProduct, image: e.target.value })} placeholder="URL фото (необязательно)" className="px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+                    <input type="text" value={newProduct.description} onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })} placeholder="Описание" className="md:col-span-2 px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+                  </div>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4"><i className="fas fa-plus-circle text-violet-600 mr-2"></i>Добавить товар</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" value={newProduct.name} onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })} placeholder="Название товара *" className="px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
-                <input type="number" value={newProduct.price} onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })} placeholder="Цена (₽) *" className="px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
-                <select value={newProduct.category} onChange={(e) => setNewProduct({ ...newProduct, category: e.target.value })} className="px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
-                  <option value="">Выберите категорию *</option>
-                  {categories.filter(c => c.name !== 'Все товары').map(cat => <option key={cat.id} value={cat.name}>{cat.name}</option>)}
-                </select>
-                <input type="text" value={newProduct.image} onChange={(e) => setNewProduct({ ...newProduct, image: e.target.value })} placeholder="URL фото (необязательно)" className="px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
-                <input type="text" value={newProduct.description} onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })} placeholder="Описание (необязательно)" className="md:col-span-2 px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
-              </div>
-              <button onClick={handleAddProduct} className="mt-4 px-6 py-2 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white rounded-lg transition-all font-medium"><i className="fas fa-plus mr-2"></i>Добавить товар</button>
-            </div>
-
-            <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4"><i className="fas fa-list text-violet-600 mr-2"></i>Все товары ({products.length})</h3>
-              <div className="space-y-3">
-                {products.map(product => (
-                  <div key={product.id} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-                    {product.image ? <img src={product.image} alt={product.name} className="w-14 h-14 rounded-lg object-cover" /> : <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${getCategoryColor(product.category)} flex items-center justify-center`}><i className={`fas ${getCategoryIcon(product.category)} text-white`}></i></div>}
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-gray-900 truncate">{product.name}</p>
-                      <p className="text-sm text-gray-500">{product.category} • {product.price}₽</p>
-                    </div>
-                    <div className="flex gap-2 shrink-0">
-                      <button onClick={() => setEditingProduct(product)} className="px-3 py-1 bg-violet-100 hover:bg-violet-200 text-violet-700 rounded-lg text-sm transition-all"><i className="fas fa-edit"></i></button>
-                      <button onClick={() => handleDeleteProduct(product.id)} className="px-3 py-1 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg text-sm transition-all"><i className="fas fa-trash"></i></button>
+                  {/* SEO Fields */}
+                  <div className="mt-5 pt-5 border-t border-violet-100">
+                    <p className="font-semibold text-green-700 mb-3"><i className="fas fa-magnifying-glass-chart mr-2"></i>SEO для поиска (необязательно — заполнится автоматически)</p>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="text-xs text-gray-500 mb-1 block">SEO Title (заголовок для поисковика, 50-60 символов)</label>
+                        <input type="text" value={newProduct.seoTitle} onChange={(e) => setNewProduct({ ...newProduct, seoTitle: e.target.value })} placeholder="Купить [товар] | [категория] — ShopBot" className="w-full px-4 py-2 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-sm" />
+                      </div>
+                      <div>
+                        <label className="text-xs text-gray-500 mb-1 block">SEO Description (описание для поисковика, 150-160 символов)</label>
+                        <textarea value={newProduct.seoDescription} onChange={(e) => setNewProduct({ ...newProduct, seoDescription: e.target.value })} placeholder="Купить [товар] быстро и безопасно. Описание преимуществ..." rows={2} className="w-full px-4 py-2 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-sm resize-none" />
+                      </div>
+                      <div>
+                        <label className="text-xs text-gray-500 mb-1 block">SEO Keywords (ключевые слова через запятую)</label>
+                        <input type="text" value={newProduct.seoKeywords} onChange={(e) => setNewProduct({ ...newProduct, seoKeywords: e.target.value })} placeholder="купить товар, товар купить, товар недорого" className="w-full px-4 py-2 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-sm" />
+                      </div>
                     </div>
                   </div>
-                ))}
-                {products.length === 0 && <p className="text-center text-gray-400 py-8">Товаров пока нет</p>}
+
+                  <button onClick={handleAddProduct} className="mt-4 px-6 py-2 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white rounded-lg transition-all font-medium"><i className="fas fa-plus mr-2"></i>Добавить товар</button>
+                </div>
+
+                <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4"><i className="fas fa-list text-violet-600 mr-2"></i>Все товары ({products.length})</h3>
+                  <div className="space-y-3">
+                    {products.map(product => (
+                      <div key={product.id} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                        {product.image ? <img src={product.image} alt={product.name} className="w-14 h-14 rounded-lg object-cover" /> : <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${getCategoryColor(product.category)} flex items-center justify-center`}><i className={`fas ${getCategoryIcon(product.category)} text-white`}></i></div>}
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium text-gray-900 truncate">{product.name}</p>
+                          <p className="text-sm text-gray-500">{product.category} • {product.price}₽</p>
+                          {product.seoTitle && <p className="text-xs text-green-600 truncate mt-0.5"><i className="fas fa-magnifying-glass mr-1"></i>{product.seoTitle}</p>}
+                        </div>
+                        <div className="flex gap-2 shrink-0">
+                          <button onClick={() => setEditingProduct(product)} className="px-3 py-1 bg-violet-100 hover:bg-violet-200 text-violet-700 rounded-lg text-sm transition-all"><i className="fas fa-edit"></i></button>
+                          <button onClick={() => handleDeleteProduct(product.id)} className="px-3 py-1 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg text-sm transition-all"><i className="fas fa-trash"></i></button>
+                        </div>
+                      </div>
+                    ))}
+                    {products.length === 0 && <p className="text-center text-gray-400 py-8">Товаров пока нет</p>}
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* TAB: Categories */}
+            {adminTab === 'categories' && (
+              <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4"><i className="fas fa-tags text-violet-600 mr-2"></i>Категории</h3>
+                <div className="flex gap-3 mb-6 flex-wrap">
+                  <input type="text" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} placeholder="Название категории" className="flex-1 min-w-[200px] px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+                  <button onClick={handleAddCategory} className="px-6 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg transition-all"><i className="fas fa-plus mr-1"></i>Добавить</button>
+                </div>
+                <div className="space-y-3">
+                  {categories.map(cat => (
+                    <div key={cat.id} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-gray-900">{cat.name}</p>
+                        {cat.seoTitle && <p className="text-xs text-green-600 truncate mt-0.5"><i className="fas fa-magnifying-glass mr-1"></i>{cat.seoTitle}</p>}
+                        <p className="text-xs text-gray-400 mt-0.5">{products.filter(p => p.category === cat.name).length} товаров</p>
+                      </div>
+                      <div className="flex gap-2 shrink-0">
+                        <button onClick={() => setEditingCategory(cat)} className="px-3 py-1 bg-violet-100 hover:bg-violet-200 text-violet-700 rounded-lg text-sm transition-all"><i className="fas fa-edit"></i></button>
+                        {cat.id !== '1' && <button onClick={() => handleDeleteCategory(cat.id)} className="px-3 py-1 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg text-sm transition-all"><i className="fas fa-trash"></i></button>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
+
+            {/* TAB: Global SEO */}
+            {adminTab === 'seo' && (
+              <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2"><i className="fas fa-magnifying-glass-chart text-violet-600 mr-2"></i>SEO-настройки сайта</h3>
+                <p className="text-sm text-gray-500 mb-5">Эти теги используются для главной страницы и когда не выбрана конкретная категория</p>
+
+                <div className="space-y-4">
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-1 block">
+                      <i className="fas fa-heading text-violet-500 mr-1"></i>Название сайта (Title)
+                      <span className="text-xs text-gray-400 ml-2">50-60 символов</span>
+                    </label>
+                    <input type="text" value={globalSEO.siteTitle} onChange={(e) => setGlobalSEO({ ...globalSEO, siteTitle: e.target.value })} className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+                    <p className="text-xs text-gray-400 mt-1">Отображается во вкладке браузера и как заголовок в поиске</p>
+                  </div>
+
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-1 block">
+                      <i className="fas fa-align-left text-violet-500 mr-1"></i>Описание сайта (Description)
+                      <span className="text-xs text-gray-400 ml-2">150-160 символов</span>
+                    </label>
+                    <textarea value={globalSEO.siteDescription} onChange={(e) => setGlobalSEO({ ...globalSEO, siteDescription: e.target.value })} rows={3} className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none" />
+                    <p className="text-xs text-gray-400 mt-1">Текст под ссылкой в результатах поиска</p>
+                  </div>
+
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-1 block">
+                      <i className="fas fa-key text-violet-500 mr-1"></i>Ключевые слова (Keywords)
+                      <span className="text-xs text-gray-400 ml-2">через запятую</span>
+                    </label>
+                    <textarea value={globalSEO.siteKeywords} onChange={(e) => setGlobalSEO({ ...globalSEO, siteKeywords: e.target.value })} rows={3} className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none" />
+                    <p className="text-xs text-gray-400 mt-1">Общие ключевые слова для всего сайта</p>
+                  </div>
+
+                  <button onClick={handleSaveGlobalSEO} className={`px-6 py-2 rounded-lg transition-all font-medium ${savedSEO ? 'bg-green-500 text-white' : 'bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white'}`}>
+                    {savedSEO ? <><i className="fas fa-check mr-2"></i>Сохранено!</> : <><i className="fas fa-save mr-2"></i>Сохранить SEO-настройки</>}
+                  </button>
+                </div>
+
+                {/* Preview */}
+                <div className="mt-6 pt-6 border-t border-violet-100">
+                  <p className="text-sm font-medium text-gray-700 mb-3"><i className="fas fa-eye text-violet-500 mr-1"></i>Как будет выглядеть в Google:</p>
+                  <div className="bg-white border border-gray-200 rounded-lg p-4">
+                    <p className="text-blue-700 text-lg hover:underline cursor-pointer">{globalSEO.siteTitle}</p>
+                    <p className="text-green-700 text-sm">your-domain.com</p>
+                    <p className="text-gray-600 text-sm mt-1">{globalSEO.siteDescription}</p>
+                  </div>
+                </div>
+
+                {/* SEO Tips */}
+                <div className="mt-6 pt-6 border-t border-violet-100">
+                  <p className="text-sm font-medium text-gray-700 mb-3"><i className="fas fa-lightbulb text-amber-500 mr-1"></i>Советы по SEO:</p>
+                  <div className="space-y-2 text-sm text-gray-600">
+                    <p>• Title должен содержать главный ключ в начале</p>
+                    <p>• Description — с призывом к действию («Купить», «Заказать», «Узнать»)</p>
+                    <p>• Keywords — 5-10 ключевых фраз через запятую</p>
+                    <p>• Не используйте одинаковые ключи для разных страниц</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* TAB: Settings */}
+            {adminTab === 'settings' && (
+              <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4"><i className="fas fa-cog text-violet-600 mr-2"></i>Настройки</h3>
+                <div className="space-y-6">
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-2 block"><i className="fab fa-telegram text-violet-500 mr-1"></i>Ссылка на Telegram бот</label>
+                    <div className="flex gap-3 flex-wrap">
+                      <input type="text" value={botLink} onChange={(e) => { setBotLink(e.target.value); setSavedBotLink(false) }} placeholder="https://t.me/your_bot?start=buy" className="flex-1 min-w-[200px] px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+                      <button onClick={() => { localStorage.setItem('shop_bot_link', botLink); setSavedBotLink(true); setTimeout(() => setSavedBotLink(false), 2000) }} className={`px-6 py-2 rounded-lg transition-all ${savedBotLink ? 'bg-green-500 text-white' : 'bg-violet-600 hover:bg-violet-700 text-white'}`}>
+                        {savedBotLink ? <><i className="fas fa-check mr-1"></i>Сохранено!</> : 'Сохранить'}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-violet-100">
+                    <p className="text-sm font-medium text-gray-700 mb-2"><i className="fas fa-shield-halved text-violet-500 mr-1"></i>Безопасность</p>
+                    <p className="text-sm text-gray-500 mb-2">Защита от накрутки: макс. {MAX_CLICKS} нажатий «Купить» в минуту</p>
+                    <p className="text-sm text-gray-500">Пароль админки: <code className="bg-violet-100 px-2 py-0.5 rounded text-violet-700 font-mono text-xs">admin123</code> (по умолчанию)</p>
+                  </div>
+
+                  <div className="pt-4 border-t border-violet-100">
+                    <p className="text-sm font-medium text-red-700 mb-2"><i className="fas fa-trash mr-1"></i>Сброс данных</p>
+                    <button onClick={() => { if (confirm('Удалить ВСЕ данные? Это действие необратимо!')) { localStorage.clear(); window.location.reload() } }} className="px-4 py-2 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg text-sm transition-all">Сбросить все данные</button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </section>
       )}
 
+      {/* Edit Product Modal */}
       {editingProduct && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-md">
-            <h3 className="text-lg font-semibold mb-4">Редактировать товар</h3>
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-lg my-8">
+            <h3 className="text-lg font-semibold mb-4"><i className="fas fa-edit text-violet-600 mr-2"></i>Редактировать товар</h3>
             <div className="space-y-3">
-              <input type="text" value={editingProduct.name} onChange={(e) => setEditingProduct({ ...editingProduct, name: e.target.value })} className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
-              <input type="number" value={editingProduct.price} onChange={(e) => setEditingProduct({ ...editingProduct, price: Number(e.target.value) })} className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+              <input type="text" value={editingProduct.name} onChange={(e) => setEditingProduct({ ...editingProduct, name: e.target.value })} placeholder="Название" className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+              <input type="number" value={editingProduct.price} onChange={(e) => setEditingProduct({ ...editingProduct, price: Number(e.target.value) })} placeholder="Цена" className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
               <select value={editingProduct.category} onChange={(e) => setEditingProduct({ ...editingProduct, category: e.target.value })} className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
                 {categories.filter(c => c.name !== 'Все товары').map(cat => <option key={cat.id} value={cat.name}>{cat.name}</option>)}
               </select>
-              <input type="text" value={editingProduct.image} onChange={(e) => setEditingProduct({ ...editingProduct, image: e.target.value })} className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
-              <input type="text" value={editingProduct.description} onChange={(e) => setEditingProduct({ ...editingProduct, description: e.target.value })} className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+              <input type="text" value={editingProduct.image} onChange={(e) => setEditingProduct({ ...editingProduct, image: e.target.value })} placeholder="URL фото" className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+              <input type="text" value={editingProduct.description} onChange={(e) => setEditingProduct({ ...editingProduct, description: e.target.value })} placeholder="Описание" className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+
+              <div className="pt-3 border-t border-violet-100">
+                <p className="font-semibold text-green-700 mb-3 text-sm"><i className="fas fa-magnifying-glass-chart mr-2"></i>SEO для поиска</p>
+                <div className="space-y-3">
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1 block">SEO Title</label>
+                    <input type="text" value={editingProduct.seoTitle} onChange={(e) => setEditingProduct({ ...editingProduct, seoTitle: e.target.value })} className="w-full px-4 py-2 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-sm" />
+                  </div>
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1 block">SEO Description</label>
+                    <textarea value={editingProduct.seoDescription} onChange={(e) => setEditingProduct({ ...editingProduct, seoDescription: e.target.value })} rows={2} className="w-full px-4 py-2 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-sm resize-none" />
+                  </div>
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1 block">SEO Keywords (через запятую)</label>
+                    <input type="text" value={editingProduct.seoKeywords} onChange={(e) => setEditingProduct({ ...editingProduct, seoKeywords: e.target.value })} className="w-full px-4 py-2 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-sm" />
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="flex gap-3 mt-6">
               <button onClick={handleUpdateProduct} className="flex-1 px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg transition-all">Сохранить</button>
@@ -1279,6 +695,45 @@ function App() {
         </div>
       )}
 
+      {/* Edit Category Modal */}
+      {editingCategory && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-lg my-8">
+            <h3 className="text-lg font-semibold mb-4"><i className="fas fa-tags text-violet-600 mr-2"></i>Редактировать категорию: {editingCategory.name}</h3>
+            <div className="space-y-4">
+              <div>
+                <label className="text-sm font-medium text-gray-700 mb-1 block">Название категории</label>
+                <input type="text" value={editingCategory.name} onChange={(e) => setEditingCategory({ ...editingCategory, name: e.target.value })} className="w-full px-4 py-2 border border-violet-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500" />
+              </div>
+
+              <div className="pt-3 border-t border-violet-100">
+                <p className="font-semibold text-green-700 mb-3 text-sm"><i className="fas fa-magnifying-glass-chart mr-2"></i>SEO для этой категории</p>
+                <p className="text-xs text-gray-500 mb-3">Когда пользователь выберет эту категорию — эти теги покажутся в поиске</p>
+                <div className="space-y-3">
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1 block">SEO Title (заголовок для поисковика)</label>
+                    <input type="text" value={editingCategory.seoTitle} onChange={(e) => setEditingCategory({ ...editingCategory, seoTitle: e.target.value })} placeholder="Купить [категория] онлайн — ShopBot" className="w-full px-4 py-2 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-sm" />
+                  </div>
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1 block">SEO Description (описание для поисковика)</label>
+                    <textarea value={editingCategory.seoDescription} onChange={(e) => setEditingCategory({ ...editingCategory, seoDescription: e.target.value })} placeholder="Купить [категория] быстро и безопасно. Лучшие цены, доставка через Telegram." rows={2} className="w-full px-4 py-2 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-sm resize-none" />
+                  </div>
+                  <div>
+                    <label className="text-xs text-gray-500 mb-1 block">SEO Keywords (ключевые слова через запятую)</label>
+                    <input type="text" value={editingCategory.seoKeywords} onChange={(e) => setEditingCategory({ ...editingCategory, seoKeywords: e.target.value })} placeholder="купить категория, категория купить, категория онлайн" className="w-full px-4 py-2 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 text-sm" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-3 mt-6">
+              <button onClick={handleUpdateCategory} className="flex-1 px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg transition-all">Сохранить</button>
+              <button onClick={() => setEditingCategory(null)} className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-all">Отмена</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Password Modal */}
       {showPasswordModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl p-6 w-full max-w-sm">
@@ -1294,14 +749,13 @@ function App() {
         </div>
       )}
 
+      {/* Catalog */}
       {!showAdmin && (
         <section className="px-4 pb-16">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-wrap gap-2 mb-8 justify-center">
               {categories.map(cat => (
-                <button key={cat.id} onClick={() => setSelectedCategory(cat.name)} className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === cat.name ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-200' : 'bg-white text-gray-600 hover:bg-violet-50 border border-violet-100'}`}>
-                  {cat.name}
-                </button>
+                <button key={cat.id} onClick={() => setSelectedCategory(cat.name)} className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === cat.name ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-200' : 'bg-white text-gray-600 hover:bg-violet-50 border border-violet-100'}`}>{cat.name}</button>
               ))}
             </div>
 
@@ -1316,9 +770,7 @@ function App() {
                     <h3 className="font-semibold text-gray-900 text-lg mb-1">{product.name}</h3>
                     <p className="text-sm text-gray-500 mb-1">{product.category}</p>
                     {product.description && <p className="text-sm text-gray-400 mb-4 line-clamp-2">{product.description}</p>}
-                    <button onClick={() => handleBuy(product)} className="w-full py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-md shadow-violet-200 hover:shadow-lg hover:shadow-violet-300 active:scale-95">
-                      <i className="fab fa-telegram"></i>Купить
-                    </button>
+                    <button onClick={() => handleBuy(product)} className="w-full py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-md shadow-violet-200 hover:shadow-lg hover:shadow-violet-300 active:scale-95"><i className="fab fa-telegram"></i>Купить</button>
                   </div>
                 </div>
               ))}
@@ -1341,9 +793,7 @@ function App() {
             <span className="font-bold text-gray-900">ShopBot</span>
           </div>
           <p className="text-sm text-gray-400">Покупки через Telegram бот — быстро и удобно</p>
-          <button onClick={() => setShowInstruction(true)} className="mt-3 inline-flex items-center gap-2 text-sm text-violet-600 hover:text-violet-800 transition-all">
-            <i className="fas fa-book-open"></i>Полная инструкция (домен, сервер, SEO)
-          </button>
+          <button onClick={() => setShowInstruction(true)} className="mt-3 inline-flex items-center gap-2 text-sm text-violet-600 hover:text-violet-800 transition-all"><i className="fas fa-book-open"></i>Полная инструкция (SEO через админку)</button>
           <p className="text-xs text-gray-300 mt-2">© 2024 ShopBot</p>
         </div>
       </footer>
