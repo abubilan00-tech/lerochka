@@ -202,37 +202,367 @@ function App() {
           </div>
 
           {/* TOC */}
-          <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 mb-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4"><i className="fas fa-list-ol text-violet-600 mr-2"></i>Содержание</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {[
-                { num: 1, title: 'Создание Telegram бота', icon: 'fa-robot' },
-                { num: 2, title: 'Вход в админ-панель', icon: 'fa-lock' },
-                { num: 3, title: 'Настройка ссылки бота', icon: 'fa-cog' },
-                { num: 4, title: 'Добавление категорий', icon: 'fa-tags' },
-                { num: 5, title: 'Добавление товаров + SEO', icon: 'fa-plus-circle' },
-                { num: 6, title: 'SEO для категорий', icon: 'fa-magnifying-glass-chart' },
-                { num: 7, title: 'Глобальные SEO-настройки', icon: 'fa-globe' },
-                { num: 8, title: 'Как работает SEO в поиске', icon: 'fa-diagram-project' },
-                { num: 9, title: 'Покупка домена', icon: 'fa-globe' },
-                { num: 10, title: 'Выбор хостинга: характеристики', icon: 'fa-server' },
-                { num: 11, title: 'Загрузка сайта на сервер', icon: 'fa-cloud-arrow-up' },
-                { num: 12, title: 'Подключение домена и SSL', icon: 'fa-link' },
-                { num: 13, title: 'Что поменять перед запуском', icon: 'fa-edit' },
-                { num: 14, title: 'Финальный чек-лист запуска', icon: 'fa-clipboard-check' },
-              ].map(item => (
-                <a key={item.num} href={`#step-${item.num}`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-violet-50 transition-all group">
-                  <span className="w-8 h-8 bg-violet-100 group-hover:bg-violet-200 rounded-lg flex items-center justify-center text-violet-600 text-sm font-bold transition-all">{item.num}</span>
-                  <span className="text-gray-700 group-hover:text-violet-700 text-sm font-medium transition-all"><i className={`fas ${item.icon} mr-2 text-violet-400`}></i>{item.title}</span>
-                </a>
-              ))}
+            <div className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 mb-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4"><i className="fas fa-list-ol text-violet-600 mr-2"></i>Содержание</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                {[
+                  { num: 1, title: '🖥 Установка программ на ПК', icon: 'fa-download', highlight: true },
+                  { num: 2, title: '📁 Где взять файлы проекта', icon: 'fa-folder-open', highlight: true },
+                  { num: 3, title: '🗂 Структура файлов проекта', icon: 'fa-sitemap', highlight: true },
+                  { num: 4, title: '🚀 Запуск сайта на ПК', icon: 'fa-play', highlight: true },
+                  { num: 5, title: '📦 Сборка проекта для сервера', icon: 'fa-box-archive', highlight: true },
+                  { num: 6, title: 'Создание Telegram бота', icon: 'fa-robot' },
+                  { num: 7, title: 'Вход в админ-панель', icon: 'fa-lock' },
+                  { num: 8, title: 'Настройка ссылки бота', icon: 'fa-cog' },
+                  { num: 9, title: 'Добавление категорий', icon: 'fa-tags' },
+                  { num: 10, title: 'Добавление товаров + SEO', icon: 'fa-plus-circle' },
+                  { num: 11, title: 'SEO для категорий', icon: 'fa-magnifying-glass-chart' },
+                  { num: 12, title: 'Глобальные SEO-настройки', icon: 'fa-globe' },
+                  { num: 13, title: 'Как работает SEO в поиске', icon: 'fa-diagram-project' },
+                  { num: 14, title: 'Покупка домена', icon: 'fa-globe' },
+                  { num: 15, title: 'Выбор хостинга: характеристики', icon: 'fa-server' },
+                  { num: 16, title: 'Загрузка сайта на сервер', icon: 'fa-cloud-arrow-up' },
+                  { num: 17, title: 'Подключение домена и SSL', icon: 'fa-link' },
+                  { num: 18, title: 'Что поменять перед запуском', icon: 'fa-edit' },
+                  { num: 19, title: 'Финальный чек-лист запуска', icon: 'fa-clipboard-check' },
+                ].map(item => (
+                  <a key={item.num} href={`#step-${item.num}`} className={`flex items-center gap-3 p-3 rounded-xl transition-all group ${item.highlight ? 'bg-green-50 hover:bg-green-100 border border-green-200' : 'hover:bg-violet-50'}`}>
+                    <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold transition-all ${item.highlight ? 'bg-green-200 text-green-700' : 'bg-violet-100 group-hover:bg-violet-200 text-violet-600'}`}>{item.num}</span>
+                    <span className={`text-sm font-medium transition-all ${item.highlight ? 'text-green-800 font-semibold' : 'text-gray-700 group-hover:text-violet-700'}`}>{item.title}</span>
+                  </a>
+                ))}
+              </div>
+              <div className="mt-4 bg-green-50 rounded-lg p-3 border border-green-200">
+                <p className="text-xs text-green-700"><i className="fas fa-star mr-1"></i><strong>Зелёным</strong> выделены шаги для запуска на ПК — начните с них!</p>
+              </div>
+            </div>
+          {/* ===== НОВЫЕ ШАГИ: ЗАПУСК НА ПК ===== */}
+
+          {/* Шаг 1: Установка программ */}
+          <div id="step-1" className="bg-white rounded-2xl shadow-sm border-2 border-green-200 p-6 md:p-8 mb-6 scroll-mt-24">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold">1</span>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-download text-green-600 mr-2"></i>Установка программ на ПК</h3>
+            </div>
+            <div className="space-y-4 text-gray-600">
+              <p>Перед началом работы нужно установить 2 программы на ваш компьютер:</p>
+
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-5 border border-green-200">
+                <p className="font-bold text-green-800 text-lg mb-3"><i className="fab fa-node-js text-green-600 mr-2"></i>1. Node.js (обязательно)</p>
+                <p className="text-sm text-gray-600 mb-3">Это среда для запуска JavaScript. Без неё сайт не запустится.</p>
+                <div className="space-y-2">
+                  <div className="flex gap-3 items-start bg-white rounded-lg p-3 border border-green-100">
+                    <span className="w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+                    <div className="flex-1">
+                      <p className="text-sm"><strong>Зайдите на сайт:</strong> <code className="bg-green-100 px-2 py-0.5 rounded text-green-700 font-mono text-xs">nodejs.org</code></p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 items-start bg-white rounded-lg p-3 border border-green-100">
+                    <span className="w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+                    <div className="flex-1">
+                      <p className="text-sm"><strong>Скачайте версию LTS</strong> (рекомендуемая, зелёная кнопка слева)</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 items-start bg-white rounded-lg p-3 border border-green-100">
+                    <span className="w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
+                    <div className="flex-1">
+                      <p className="text-sm"><strong>Запустите установщик</strong> и нажимайте «Next» → «Install» → «Finish»</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 items-start bg-white rounded-lg p-3 border border-green-100">
+                    <span className="w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</span>
+                    <div className="flex-1">
+                      <p className="text-sm"><strong>Проверьте установку:</strong> откройте командную строку (Win+R → cmd) и введите:</p>
+                      <div className="bg-gray-900 rounded p-2 mt-2 font-mono text-xs text-green-400">node --version</div>
+                      <p className="text-xs text-gray-500 mt-1">Должно показать версию, например: <code className="bg-gray-100 px-1.5 py-0.5 rounded font-mono">v20.11.0</code></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-5 border border-blue-200">
+                <p className="font-bold text-blue-800 text-lg mb-3"><i className="fas fa-code text-blue-600 mr-2"></i>2. Редактор кода (рекомендуется)</p>
+                <p className="text-sm text-gray-600 mb-3">Для удобного редактирования файлов проекта.</p>
+                <div className="space-y-3">
+                  <div className="bg-white rounded-lg p-3 border border-blue-100">
+                    <p className="font-semibold text-blue-700 mb-2">⭐ Visual Studio Code (рекомендуется)</p>
+                    <p className="text-xs text-gray-600 mb-2">Бесплатный, мощный, с подсветкой синтаксиса</p>
+                    <p className="text-xs"><strong>Скачать:</strong> <code className="bg-blue-100 px-2 py-0.5 rounded text-blue-700 font-mono">code.visualstudio.com</code></p>
+                  </div>
+                  <div className="bg-white rounded-lg p-3 border border-blue-100">
+                    <p className="font-semibold text-gray-700 mb-2">Альтернативы:</p>
+                    <ul className="text-xs text-gray-600 space-y-1">
+                      <li>• <strong>Sublime Text</strong> — лёгкий и быстрый</li>
+                      <li>• <strong>Notepad++</strong> — простой, для Windows</li>
+                      <li>• <strong>WebStorm</strong> — платный, но очень мощный</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
+                <p className="text-amber-800 text-sm"><i className="fas fa-lightbulb mr-2"></i><strong>Итого нужно установить:</strong></p>
+                <ul className="mt-2 space-y-1 text-sm text-amber-700 ml-5 list-disc">
+                  <li>✅ Node.js (обязательно)</li>
+                  <li>✅ Visual Studio Code (рекомендуется)</li>
+                  <li>⏱ Время установки: 5-10 минут</li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          {/* Steps */}
-          <div id="step-1" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          {/* Шаг 2: Где взять файлы */}
+          <div id="step-2" className="bg-white rounded-2xl shadow-sm border-2 border-green-200 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">1</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold">2</span>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-folder-open text-green-600 mr-2"></i>Где взять файлы проекта</h3>
+            </div>
+            <div className="space-y-4 text-gray-600">
+              <p>Файлы проекта — это код сайта. Их нужно скачать на ваш компьютер.</p>
+
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-5 border border-green-200">
+                <p className="font-bold text-green-800 text-lg mb-3"><i className="fas fa-download text-green-600 mr-2"></i>Вариант 1: Скачать архивом</p>
+                <ol className="space-y-3 ml-1">
+                  {[
+                    'Получите архив с файлами проекта (ZIP/RAR)',
+                    'Распакуйте архив в удобную папку (например: C:\\Projects\\my-shop)',
+                    'Убедитесь, что внутри есть файлы: package.json, src/, index.html',
+                  ].map((step, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                      <span className="text-sm">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-5 border border-blue-200">
+                <p className="font-bold text-blue-800 text-lg mb-3"><i className="fab fa-github text-blue-600 mr-2"></i>Вариант 2: Скачать с GitHub</p>
+                <ol className="space-y-3 ml-1">
+                  {[
+                    'Зайдите на страницу репозитория проекта на GitHub',
+                    'Нажмите зелёную кнопку «Code»',
+                    'Выберите «Download ZIP»',
+                    'Распакуйте архив в удобную папку',
+                  ].map((step, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="w-6 h-6 bg-blue-200 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                      <span className="text-sm">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="bg-gradient-to-br from-purple-50 to-fuchsia-50 rounded-xl p-5 border border-purple-200">
+                <p className="font-bold text-purple-800 text-lg mb-3"><i className="fas fa-code-branch text-purple-600 mr-2"></i>Вариант 3: Клонировать через Git</p>
+                <div className="bg-gray-900 rounded-lg p-4 font-mono text-xs">
+                  <p className="text-gray-400"># Откройте терминал в папке проектов и введите:</p>
+                  <p className="text-green-400">git clone https://github.com/username/my-shop.git</p>
+                  <p className="text-green-400">cd my-shop</p>
+                </div>
+              </div>
+
+              <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
+                <p className="text-amber-800 text-sm"><i className="fas fa-lightbulb mr-2"></i><strong>Совет:</strong> Создайте отдельную папку для проектов, например: <code className="bg-amber-100 px-2 py-0.5 rounded font-mono text-xs">C:\\Projects\\</code> или <code className="bg-amber-100 px-2 py-0.5 rounded font-mono text-xs">~/Documents/Projects/</code></p>
+              </div>
+            </div>
+          </div>
+
+          {/* Шаг 3: Структура файлов */}
+          <div id="step-3" className="bg-white rounded-2xl shadow-sm border-2 border-green-200 p-6 md:p-8 mb-6 scroll-mt-24">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold">3</span>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-sitemap text-green-600 mr-2"></i>Структура файлов проекта</h3>
+            </div>
+            <div className="space-y-4 text-gray-600">
+              <p>Вот как выглядят файлы проекта и за что каждый отвечает:</p>
+
+              <div className="bg-gray-900 rounded-xl p-5 font-mono text-xs overflow-x-auto">
+                <pre className="text-gray-300">
+{`my-shop/                          # 📁 Корень проекта
+├── 📄 package.json                 # ⚙️ Настройки проекта и зависимости
+├── 📄 package-lock.json            # 🔒 Зафиксированные версии пакетов
+├── 📄 index.html                   # 🌐 Главная HTML страница (мета-теги SEO)
+├── 📄 vite.config.js               # ⚙️ Настройки сборщика Vite
+├── 📄 tsconfig.json                # ⚙️ Настройки TypeScript
+│
+├── 📁 src/                         # 📂 Исходный код (здесь писать!)
+│   ├── 📄 main.tsx                 # 🚀 Точка входа (запуск React)
+│   ├── 📄 App.tsx                  # 🎨 ГЛАВНЫЙ ФАЙЛ — весь интерфейс
+│   └── 📄 index.css                # 🎨 Стили (Tailwind CSS)
+│
+├── 📁 public/                      # 📂 Статические файлы (картинки, иконки)
+│   └── 📄 favicon.ico              # 🖼 Иконка сайта
+│
+└── 📁 dist/                        # 📦 Готовый сайт (после сборки)
+    ├── 📄 index.html               # 🌐 Готовая HTML страница
+    └── 📁 assets/                  # 📦 CSS и JS файлы
+        ├── 📄 index-xxxxx.css      # 🎨 Стили
+        └── 📄 index-xxxxx.js       # ⚙️ JavaScript код`}
+                </pre>
+              </div>
+
+              <div className="bg-violet-50 rounded-xl p-5 border border-violet-200">
+                <p className="font-bold text-violet-800 text-lg mb-3"><i className="fas fa-star text-violet-600 mr-2"></i>Главные файлы для редактирования:</p>
+                <div className="space-y-3">
+                  <div className="bg-white rounded-lg p-4 border border-violet-100">
+                    <p className="font-semibold text-violet-700 mb-2">📄 src/App.tsx — ГЛАВНЫЙ ФАЙЛ</p>
+                    <p className="text-sm text-gray-600 mb-2">Здесь весь интерфейс сайта: каталог, админ-панель, инструкция</p>
+                    <div className="bg-gray-50 rounded p-2 text-xs text-gray-600">
+                      <p>• Строки 1-100: Настройки, константы, данные по умолчанию</p>
+                      <p>• Строки 100-400: Компоненты (каталог, админка, модалки)</p>
+                      <p>• Строки 400-800: Инструкция (шаги 1-19)</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-lg p-4 border border-violet-100">
+                    <p className="font-semibold text-violet-700 mb-2">📄 index.html — МЕТА-ТЕГИ SEO</p>
+                    <p className="text-sm text-gray-600 mb-2">Здесь title, description, keywords для главной страницы</p>
+                    <div className="bg-gray-50 rounded p-2 text-xs text-gray-600">
+                      <p>• Строка 7: <code className="bg-gray-200 px-1 rounded">&lt;title&gt;</code> — заголовок вкладки</p>
+                      <p>• Строка 9: <code className="bg-gray-200 px-1 rounded">&lt;meta name="description"&gt;</code> — описание</p>
+                      <p>• Строка 10: <code className="bg-gray-200 px-1 rounded">&lt;meta name="keywords"&gt;</code> — ключевые слова</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-lg p-4 border border-violet-100">
+                    <p className="font-semibold text-violet-700 mb-2">📄 src/index.css — СТИЛИ</p>
+                    <p className="text-sm text-gray-600">Здесь можно менять цвета, шрифты, анимации (редко нужно трогать)</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
+                <p className="text-green-800 text-sm"><i className="fas fa-check-circle mr-2"></i><strong>Важно:</strong> Не удаляйте и не переименовывайте файлы! Особенно <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">package.json</code>, <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">vite.config.js</code>, <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">tsconfig.json</code></p>
+              </div>
+            </div>
+          </div>
+
+          {/* Шаг 4: Запуск на ПК */}
+          <div id="step-4" className="bg-white rounded-2xl shadow-sm border-2 border-green-200 p-6 md:p-8 mb-6 scroll-mt-24">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold">4</span>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-play text-green-600 mr-2"></i>Запуск сайта на ПК (локально)</h3>
+            </div>
+            <div className="space-y-4 text-gray-600">
+              <p>Теперь запустим сайт на вашем компьютере для разработки и тестирования.</p>
+
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-5 border border-green-200">
+                <p className="font-bold text-green-800 text-lg mb-3"><i className="fas fa-terminal text-green-600 mr-2"></i>Пошаговая инструкция:</p>
+                <ol className="space-y-3 ml-1">
+                  <li className="flex gap-3">
+                    <span className="w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+                    <div className="flex-1">
+                      <p className="text-sm"><strong>Откройте папку проекта</strong> в проводнике</p>
+                    </div>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+                    <div className="flex-1">
+                      <p className="text-sm"><strong>Откройте терминал в этой папке:</strong></p>
+                      <ul className="text-xs text-gray-600 mt-1 space-y-1 ml-4">
+                        <li>• <strong>Windows:</strong> Shift + правый клик → «Открыть в терминале» или «Открыть PowerShell»</li>
+                        <li>• <strong>Mac/Linux:</strong> правый клик → «Открыть в терминале»</li>
+                        <li>• <strong>VS Code:</strong> Ctrl+` (или меню Terminal → New Terminal)</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
+                    <div className="flex-1">
+                      <p className="text-sm"><strong>Установите зависимости</strong> (первый раз, занимает 1-2 минуты):</p>
+                      <div className="bg-gray-900 rounded p-2 mt-2 font-mono text-xs text-green-400">npm install</div>
+                      <p className="text-xs text-gray-500 mt-1">Создастся папка <code className="bg-gray-100 px-1 rounded">node_modules/</code> со всеми библиотеками</p>
+                    </div>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</span>
+                    <div className="flex-1">
+                      <p className="text-sm"><strong>Запустите сайт в режиме разработки:</strong></p>
+                      <div className="bg-gray-900 rounded p-2 mt-2 font-mono text-xs text-green-400">npm run dev</div>
+                    </div>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="w-6 h-6 bg-green-200 text-green-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">5</span>
+                    <div className="flex-1">
+                      <p className="text-sm"><strong>Откройте сайт в браузере:</strong></p>
+                      <div className="bg-gray-900 rounded p-2 mt-2 font-mono text-xs">
+                        <p className="text-gray-400"># В терминале появится ссылка:</p>
+                        <p className="text-green-400">Local:   http://localhost:3000/</p>
+                        <p className="text-green-400">Network: http://192.168.1.5:3000/</p>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">Откройте <code className="bg-gray-100 px-1 rounded">http://localhost:3000</code> в браузере</p>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+
+              <div className="bg-blue-50 rounded-xl p-4 border border-blue-200">
+                <p className="text-blue-800 text-sm"><i className="fas fa-sync mr-2"></i><strong>Автоматическое обновление:</strong> Когда вы меняете код в <code className="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-xs">src/App.tsx</code> — сайт автоматически перезагружается в браузере! Не нужно перезапускать.</p>
+              </div>
+
+              <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
+                <p className="text-amber-800 text-sm"><i className="fas fa-stop-circle mr-2"></i><strong>Остановить сервер:</strong> В терминале нажмите <code className="bg-amber-100 px-1.5 py-0.5 rounded font-mono text-xs">Ctrl+C</code></p>
+              </div>
+
+              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
+                <p className="text-green-800 text-sm"><i className="fas fa-check-circle mr-2"></i><strong>Готово!</strong> Теперь сайт работает на вашем компьютере. Можете редактировать код и сразу видеть изменения.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Шаг 5: Сборка проекта */}
+          <div id="step-5" className="bg-white rounded-2xl shadow-sm border-2 border-green-200 p-6 md:p-8 mb-6 scroll-mt-24">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-white font-bold">5</span>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-box-archive text-green-600 mr-2"></i>Сборка проекта для сервера</h3>
+            </div>
+            <div className="space-y-4 text-gray-600">
+              <p>Когда закончите редактировать — нужно собрать готовую версию сайта для загрузки на сервер.</p>
+
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-5 border border-green-200">
+                <p className="font-bold text-green-800 text-lg mb-3"><i className="fas fa-terminal text-green-600 mr-2"></i>Команда сборки:</p>
+                <div className="bg-gray-900 rounded-lg p-4 font-mono text-xs">
+                  <p className="text-gray-400"># В терминале (в папке проекта) введите:</p>
+                  <p className="text-green-400">npm run build</p>
+                </div>
+                <p className="text-sm text-gray-600 mt-3">Эта команда создаст папку <code className="bg-gray-100 px-2 py-0.5 rounded font-mono text-xs">dist/</code> с готовым сайтом.</p>
+              </div>
+
+              <div className="bg-violet-50 rounded-xl p-5 border border-violet-200">
+                <p className="font-bold text-violet-800 text-lg mb-3"><i className="fas fa-folder-open text-violet-600 mr-2"></i>Что внутри папки dist/:</p>
+                <div className="bg-gray-900 rounded-lg p-4 font-mono text-xs">
+                  <pre className="text-gray-300">
+{`dist/
+├── 📄 index.html          # 🌐 Главная страница (1-3 КБ)
+└── 📁 assets/             # 📦 Оптимизированные файлы
+    ├── 📄 index-xxxxx.css # 🎨 Все стили (25-35 КБ)
+    └── 📄 index-xxxxx.js  # ⚙️ Весь JavaScript (200-250 КБ)`}
+                  </pre>
+                </div>
+                <p className="text-sm text-gray-600 mt-3">Эти файлы нужно загрузить на хостинг (шаг 16).</p>
+              </div>
+
+              <div className="bg-blue-50 rounded-xl p-4 border border-blue-200">
+                <p className="text-blue-800 text-sm"><i className="fas fa-eye mr-2"></i><strong>Проверка перед загрузкой:</strong> Откройте файл <code className="bg-blue-100 px-1.5 py-0.5 rounded font-mono text-xs">dist/index.html</code> в браузере (двойной клик) — должен открыться ваш сайт!</p>
+              </div>
+
+              <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
+                <p className="text-amber-800 text-sm"><i className="fas fa-lightbulb mr-2"></i><strong>Когда пересобирать:</strong> Каждый раз после изменений в коде запускайте <code className="bg-amber-100 px-1.5 py-0.5 rounded font-mono text-xs">npm run build</code> и загружайте новую версию на сервер.</p>
+              </div>
+
+              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
+                <p className="text-green-800 text-sm"><i className="fas fa-check-circle mr-2"></i><strong>Итог:</strong> Теперь у вас есть готовая папка <code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">dist/</code> с оптимизированным сайтом. Можно загружать на хостинг!</p>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== СУЩЕСТВУЮЩИЕ ШАГИ (перенумерованы) ===== */}
+
+          {/* Шаг 6: Создание Telegram бота */}
+          <div id="step-6" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">6</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-robot text-violet-600 mr-2"></i>Создание Telegram бота</h3>
             </div>
             <div className="space-y-4 text-gray-600">
@@ -244,25 +574,25 @@ function App() {
             </div>
           </div>
 
-          <div id="step-2" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-7" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">2</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">7</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-lock text-violet-600 mr-2"></i>Вход в админ-панель</h3>
             </div>
             <p className="text-gray-600 mb-3">Нажмите «⚙ Админ» → пароль: <code className="bg-violet-100 px-2 py-0.5 rounded text-violet-700 font-mono text-sm">admin123</code></p>
           </div>
 
-          <div id="step-3" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-8" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">3</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">8</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-cog text-violet-600 mr-2"></i>Настройка ссылки бота</h3>
             </div>
             <p className="text-gray-600">Вкладка «⚙️ Настройки» → вставьте ссылку <code className="bg-violet-100 px-2 py-0.5 rounded text-violet-700 font-mono text-sm">https://t.me/my_shop_bot?start=buy</code> → Сохранить</p>
           </div>
 
-          <div id="step-4" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-9" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">4</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">9</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-tags text-violet-600 mr-2"></i>Добавление категорий</h3>
             </div>
             <p className="text-gray-600 mb-3">Вкладка «🏷 Категории» → введите название → «Добавить»</p>
@@ -272,9 +602,9 @@ function App() {
             </div>
           </div>
 
-          <div id="step-5" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-10" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">5</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">10</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-plus-circle text-violet-600 mr-2"></i>Добавление товаров + SEO</h3>
             </div>
             <div className="space-y-4 text-gray-600">
@@ -303,9 +633,9 @@ function App() {
             </div>
           </div>
 
-          <div id="step-6" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-11" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">6</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">11</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-magnifying-glass-chart text-violet-600 mr-2"></i>SEO для категорий</h3>
             </div>
             <div className="space-y-4 text-gray-600">
@@ -325,9 +655,9 @@ function App() {
             </div>
           </div>
 
-          <div id="step-7" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-12" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">7</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">12</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-globe text-violet-600 mr-2"></i>Глобальные SEO-настройки</h3>
             </div>
             <div className="space-y-4 text-gray-600">
@@ -342,9 +672,9 @@ function App() {
             </div>
           </div>
 
-          <div id="step-8" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-13" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">8</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">13</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-diagram-project text-violet-600 mr-2"></i>Как работает SEO в поиске</h3>
             </div>
             <div className="space-y-4 text-gray-600">
@@ -373,9 +703,9 @@ function App() {
           </div>
 
           {/* ===== STEP 9: ПОКУПКА ДОМЕНА ===== */}
-          <div id="step-9" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-14" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">9</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">14</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-globe text-violet-600 mr-2"></i>Покупка домена</h3>
             </div>
             <div className="space-y-4 text-gray-600">
@@ -439,9 +769,9 @@ function App() {
           </div>
 
           {/* ===== STEP 10: ВЫБОР ХОСТИНГА ===== */}
-          <div id="step-10" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-15" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">10</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">15</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-server text-violet-600 mr-2"></i>Выбор хостинга: характеристики и тарифы</h3>
             </div>
             <div className="space-y-4 text-gray-600">
@@ -557,9 +887,9 @@ function App() {
           </div>
 
           {/* ===== STEP 11: ЗАГРУЗКА НА СЕРВЕР ===== */}
-          <div id="step-11" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-16" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">11</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">16</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-cloud-arrow-up text-violet-600 mr-2"></i>Загрузка сайта на сервер (пошагово)</h3>
             </div>
             <div className="space-y-4 text-gray-600">
@@ -666,9 +996,9 @@ function App() {
           </div>
 
           {/* ===== STEP 12: ПОДКЛЮЧЕНИЕ ДОМЕНА ===== */}
-          <div id="step-12" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-17" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">12</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">17</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-link text-violet-600 mr-2"></i>Подключение домена и SSL</h3>
             </div>
             <div className="space-y-4 text-gray-600">
@@ -748,9 +1078,9 @@ function App() {
           </div>
 
           {/* ===== STEP 13: ЧТО ПОМЕНЯТЬ ПЕРЕД ЗАПУСКОМ ===== */}
-          <div id="step-13" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+          <div id="step-18" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">13</span>
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">18</span>
               <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-edit text-violet-600 mr-2"></i>Что нужно поменять перед запуском</h3>
             </div>
             <div className="space-y-4 text-gray-600">
@@ -816,7 +1146,7 @@ function App() {
           </div>
 
           {/* ===== STEP 14: ФИНАЛЬНЫЙ ЧЕК-ЛИСТ ===== */}
-          <div id="step-14" className="bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl p-6 md:p-8 text-white mb-8">
+          <div id="step-19" className="bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl p-6 md:p-8 text-white mb-8">
             <h3 className="text-xl font-bold mb-4"><i className="fas fa-clipboard-check mr-2"></i>Финальный чек-лист запуска</h3>
             <div className="space-y-2">
               {[
