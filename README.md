@@ -128,9 +128,21 @@ const savedPassword = localStorage.getItem('shop_admin_password') || 'мой_с�
 ### GitHub Pages (рекомендуется)
 
 1. Создайте репозиторий на GitHub
-2. Загрузите файлы из папки `dist/` в репозиторий
-3. Settings → Pages → выберите ветку `main` и папку `/ (root)`
-4. Сайт будет доступен по адресу: `https://ваш-username.github.io/имя-репо/`
+2. **Важно:** В файле `vite.config.js` укажите имя репозитория:
+   ```javascript
+   export default defineConfig({
+     base: '/имя-репозитория/',  // Например: '/lerochka/'
+     // ... остальные настройки
+   })
+   ```
+3. Пересоберите проект: `npm run build`
+4. Загрузите файлы из папки `dist/` в репозиторий
+5. Settings → Pages → Source: **GitHub Actions**
+6. Сайт будет доступен по адресу: `https://ваш-username.github.io/имя-репозитория/`
+
+**Пример:** Если репозиторий называется `lerochka`, то:
+- В `vite.config.js`: `base: '/lerochka/'`
+- URL сайта: `https://username.github.io/lerochka/`
 
 ### Netlify (drag & drop)
 
