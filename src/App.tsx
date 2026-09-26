@@ -214,8 +214,12 @@ function App() {
                 { num: 6, title: 'SEO для категорий', icon: 'fa-magnifying-glass-chart' },
                 { num: 7, title: 'Глобальные SEO-настройки', icon: 'fa-globe' },
                 { num: 8, title: 'Как работает SEO в поиске', icon: 'fa-diagram-project' },
-                { num: 9, title: 'Покупка домена и хостинг', icon: 'fa-server' },
-                { num: 10, title: 'Чек-лист запуска', icon: 'fa-clipboard-check' },
+                { num: 9, title: 'Покупка домена', icon: 'fa-globe' },
+                { num: 10, title: 'Выбор хостинга: характеристики', icon: 'fa-server' },
+                { num: 11, title: 'Загрузка сайта на сервер', icon: 'fa-cloud-arrow-up' },
+                { num: 12, title: 'Подключение домена и SSL', icon: 'fa-link' },
+                { num: 13, title: 'Что поменять перед запуском', icon: 'fa-edit' },
+                { num: 14, title: 'Финальный чек-лист запуска', icon: 'fa-clipboard-check' },
               ].map(item => (
                 <a key={item.num} href={`#step-${item.num}`} className="flex items-center gap-3 p-3 rounded-xl hover:bg-violet-50 transition-all group">
                   <span className="w-8 h-8 bg-violet-100 group-hover:bg-violet-200 rounded-lg flex items-center justify-center text-violet-600 text-sm font-bold transition-all">{item.num}</span>
@@ -368,49 +372,473 @@ function App() {
             </div>
           </div>
 
+          {/* ===== STEP 9: ПОКУПКА ДОМЕНА ===== */}
           <div id="step-9" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">9</span>
-              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-server text-violet-600 mr-2"></i>Покупка домена и хостинг</h3>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-globe text-violet-600 mr-2"></i>Покупка домена</h3>
             </div>
             <div className="space-y-4 text-gray-600">
+              <p>Домен — это адрес вашего сайта (например: <code className="bg-violet-100 px-2 py-0.5 rounded text-violet-700 font-mono text-sm">myshop.ru</code>)</p>
+
               <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
-                <p className="font-semibold text-violet-800 mb-3">Регистраторы доменов:</p>
-                <ul className="space-y-2 text-sm">
-                  <li>• <strong>REG.RU</strong> — от 199₽/год (.ru)</li>
-                  <li>• <strong>Beget</strong> — хостинг + домен</li>
-                  <li>• <strong>Namecheap</strong> — от $8.88/год (.com)</li>
-                  <li>• <strong>Cloudflare</strong> — по себестоимости + защита</li>
-                </ul>
+                <p className="font-semibold text-violet-800 mb-3"><i className="fas fa-store mr-2"></i>Где купить домен:</p>
+                <div className="space-y-3">
+                  {[
+                    { name: 'REG.RU', url: 'reg.ru', price: 'от 199₽/год (.ru)', note: 'Крупный российский регистратор, простая панель' },
+                    { name: 'Beget', url: 'beget.com', price: 'от 299₽/год (.ru)', note: 'Хостинг + домен в одном месте, удобно' },
+                    { name: 'Namecheap', url: 'namecheap.com', price: 'от $8.88/год (.com)', note: 'Международный, много зон' },
+                    { name: 'Cloudflare Registrar', url: 'cloudflare.com', price: 'по себестоимости', note: 'Без наценки + бесплатная защита от DDoS' },
+                  ].map((reg, i) => (
+                    <div key={i} className="flex gap-3 items-start bg-white rounded-lg p-3 border border-violet-100">
+                      <span className="w-6 h-6 bg-violet-200 text-violet-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <strong className="text-violet-700">{reg.name}</strong>
+                          <span className="text-xs bg-violet-100 text-violet-600 px-2 py-0.5 rounded-full">{reg.url}</span>
+                        </div>
+                        <p className="text-sm text-gray-500">{reg.note}</p>
+                        <p className="text-sm font-semibold text-green-600">{reg.price}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
+
               <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
-                <p className="font-semibold text-violet-800 mb-3">Хостинг (бесплатно):</p>
-                <ul className="space-y-2 text-sm">
-                  <li>• <strong>GitHub Pages</strong> — бесплатно, идеально для статических сайтов</li>
-                  <li>• <strong>Netlify</strong> — drag & drop загрузка</li>
-                  <li>• <strong>Vercel</strong> — быстрый деплой</li>
-                  <li>• <strong>Cloudflare Pages</strong> — бесплатно + CDN + DDoS защита</li>
+                <p className="font-semibold text-violet-800 mb-3"><i className="fas fa-list-check mr-2"></i>Как купить домен:</p>
+                <ol className="space-y-3 ml-1">
+                  {[
+                    'Зайдите на сайт регистратора (например, reg.ru)',
+                    'В поисковой строке введите желаемое имя домена',
+                    'Проверьте доступность — если свободно, добавьте в корзину',
+                    'Зарегистрируйтесь / войдите в аккаунт',
+                    'Заполните данные (ФИО, email, телефон)',
+                    'Оплатите (карта, СБП, электронные кошельки)',
+                    'Домен появится в вашем личном кабинете',
+                  ].map((step, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="w-6 h-6 bg-violet-200 text-violet-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                      <span className="text-sm">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
+                <p className="text-amber-800 text-sm"><i className="fas fa-lightbulb mr-2"></i><strong>Советы по выбору домена:</strong></p>
+                <ul className="mt-2 space-y-1 text-sm text-amber-700 ml-5 list-disc">
+                  <li>Короткий и запоминающийся (до 15 символов)</li>
+                  <li>Легко пишется и произносится</li>
+                  <li>Содержит ключевое слово (shop, store, купить)</li>
+                  <li>Зона .ru — для России, .com — международный</li>
+                  <li>Избегайте дефисов и цифр</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <div id="step-10" className="bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl p-6 md:p-8 text-white mb-8">
-            <h3 className="text-xl font-bold mb-4"><i className="fas fa-clipboard-check mr-2"></i>Чек-лист запуска</h3>
+          {/* ===== STEP 10: ВЫБОР ХОСТИНГА ===== */}
+          <div id="step-10" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">10</span>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-server text-violet-600 mr-2"></i>Выбор хостинга: характеристики и тарифы</h3>
+            </div>
+            <div className="space-y-4 text-gray-600">
+              <p>Хостинг — это место, где хранятся файлы вашего сайта. Наш сайт — статический (HTML/CSS/JS), поэтому требования минимальные.</p>
+
+              {/* Характеристики */}
+              <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-xl p-5 border border-violet-100">
+                <p className="font-bold text-violet-800 text-lg mb-3"><i className="fas fa-microchip text-violet-600 mr-2"></i>Какие характеристики важны:</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {[
+                    { icon: 'fa-hard-drive', title: 'Дисковое пространство', desc: 'Для статического сайта: 500 МБ — 1 ГБ достаточно', rec: 'Рекомендуется: 1 ГБ' },
+                    { icon: 'fa-memory', title: 'Оперативная память (RAM)', desc: 'Для статики не критично, но влияет на скорость', rec: 'Рекомендуется: 512 МБ — 1 ГБ' },
+                    { icon: 'fa-network-wired', title: 'Трафик (бандвит)', desc: 'Объём данных, который могут скачать посетители', rec: 'Рекомендуется: безлимит или 10+ ГБ/мес' },
+                    { icon: 'fa-bolt', title: 'Скорость загрузки', desc: 'Время отклика сервера. Влияет на SEO и UX', rec: 'Рекомендуется: SSD диски, CDN' },
+                    { icon: 'fa-shield-halved', title: 'SSL-сертификат', desc: 'HTTPS для безопасного соединения. Должен быть бесплатным', rec: 'Обязательно: Let\'s Encrypt (бесплатно)' },
+                    { icon: 'fa-headset', title: 'Поддержка', desc: 'Техподдержка 24/7 на русском языке', rec: 'Рекомендуется: чат + тикеты' },
+                  ].map((item, i) => (
+                    <div key={i} className="bg-white rounded-lg p-3 border border-violet-100">
+                      <div className="flex items-center gap-2 mb-1">
+                        <i className={`fas ${item.icon} text-violet-500`}></i>
+                        <p className="font-semibold text-gray-800 text-sm">{item.title}</p>
+                      </div>
+                      <p className="text-xs text-gray-600 mb-1">{item.desc}</p>
+                      <p className="text-xs font-semibold text-green-600">{item.rec}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Конкретные тарифы */}
+              <div className="bg-white rounded-xl p-5 border-2 border-violet-200">
+                <p className="font-bold text-violet-800 text-lg mb-3"><i className="fas fa-tags text-violet-600 mr-2"></i>Конкретные тарифы хостингов:</p>
+                
+                <div className="space-y-4">
+                  {/* Бесплатные */}
+                  <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+                    <p className="font-bold text-green-800 mb-3">🆓 БЕСПЛАТНЫЕ (рекомендуется для старта)</p>
+                    <div className="space-y-3">
+                      {[
+                        { name: 'GitHub Pages', specs: '1 ГБ хранилище, 100 ГБ трафик/мес, SSL бесплатно, CDN', pros: 'Идеально для статических сайтов, автодеплой из Git', cons: 'Нужен GitHub аккаунт', url: 'pages.github.com' },
+                        { name: 'Netlify', specs: '100 ГБ трафик/мес, SSL бесплатно, формы, функции', pros: 'Drag & drop загрузка, мгновенный деплой', cons: 'Бесплатный тариф ограничен 300 минут сборки/мес', url: 'netlify.com' },
+                        { name: 'Vercel', specs: '100 ГБ трафик/мес, SSL, Edge Network', pros: 'Очень быстрый, автодеплой', cons: 'Ориентирован на фреймворки, но работает и со статикой', url: 'vercel.com' },
+                        { name: 'Cloudflare Pages', specs: 'Безлимитный трафик, SSL, DDoS защита, CDN', pros: 'Лучшая защита от DDoS, глобальный CDN', cons: 'Нужен Cloudflare аккаунт', url: 'pages.cloudflare.com' },
+                      ].map((host, i) => (
+                        <div key={i} className="bg-white rounded-lg p-3 border border-green-100">
+                          <div className="flex items-center gap-2 mb-2">
+                            <strong className="text-green-700">{host.name}</strong>
+                            <span className="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded-full">{host.url}</span>
+                          </div>
+                          <p className="text-xs text-gray-600 mb-1"><strong>Характеристики:</strong> {host.specs}</p>
+                          <p className="text-xs text-green-600 mb-1"><strong>Плюсы:</strong> {host.pros}</p>
+                          <p className="text-xs text-amber-600"><strong>Минусы:</strong> {host.cons}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Платные (Россия) */}
+                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                    <p className="font-bold text-blue-800 mb-3">💰 ПЛАТНЫЕ (Россия) — от 200₽/мес</p>
+                    <div className="space-y-3">
+                      {[
+                        { name: 'Beget', tariff: 'Старт', price: '0₽/мес (бесплатный)', specs: '1 ГБ диск, 10 ГБ трафик, 1 сайт, SSL бесплатно', pros: 'Простая панель, поддержка на русском', cons: 'Ограниченный бесплатный тариф', url: 'beget.com' },
+                        { name: 'Timeweb', tariff: 'Первый', price: '199₽/мес', specs: '5 ГБ SSD, безлимит трафик, 1 сайт, SSL бесплатно', pros: 'Надёжный, быстрый SSD, хорошая поддержка', cons: 'Платный', url: 'timeweb.com' },
+                        { name: 'REG.RU Хостинг', tariff: 'Базовый', price: '180₽/мес', specs: '2 ГБ SSD, 10 ГБ трафик, 1 сайт, SSL', pros: 'Домен + хостинг в одном месте', cons: 'Мало места на базовом тарифе', url: 'reg.ru/hosting' },
+                        { name: 'SprintHost', tariff: 'Мини', price: '99₽/мес', specs: '1 ГБ SSD, 10 ГБ трафик, 1 сайт', pros: 'Очень дешёвый', cons: 'Медленная поддержка', url: 'sprinthost.ru' },
+                      ].map((host, i) => (
+                        <div key={i} className="bg-white rounded-lg p-3 border border-blue-100">
+                          <div className="flex items-center gap-2 mb-2 flex-wrap">
+                            <strong className="text-blue-700">{host.name}</strong>
+                            <span className="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">Тариф: {host.tariff}</span>
+                            <span className="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded-full font-bold">{host.price}</span>
+                          </div>
+                          <p className="text-xs text-gray-600 mb-1"><strong>Характеристики:</strong> {host.specs}</p>
+                          <p className="text-xs text-green-600 mb-1"><strong>Плюсы:</strong> {host.pros}</p>
+                          <p className="text-xs text-amber-600"><strong>Минусы:</strong> {host.cons}</p>
+                          <p className="text-xs text-gray-500 mt-1"><i className="fas fa-link mr-1"></i>{host.url}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Платные (международные) */}
+                  <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
+                    <p className="font-bold text-purple-800 mb-3">🌍 ПЛАТНЫЕ (международные) — от $3/мес</p>
+                    <div className="space-y-3">
+                      {[
+                        { name: 'Hostinger', tariff: 'Premium', price: '$2.99/мес', specs: '100 ГБ SSD, безлимит трафик, 100 сайтов, SSL', pros: 'Очень быстрый, хорошая цена', cons: 'Поддержка на английском', url: 'hostinger.com' },
+                        { name: 'DigitalOcean', tariff: 'Droplet', price: '$4/мес', specs: '1 ГБ RAM, 25 ГБ SSD, 1 ТБ трафик', pros: 'VPS — полный контроль, масштабируемый', cons: 'Нужны навыки администрирования', url: 'digitalocean.com' },
+                        { name: 'AWS (Amazon)', tariff: 'S3 + CloudFront', price: '~$1-5/мес', specs: 'Безлимит хранилище, глобальный CDN', pros: 'Масштабируемость, надёжность', cons: 'Сложная настройка', url: 'aws.amazon.com' },
+                      ].map((host, i) => (
+                        <div key={i} className="bg-white rounded-lg p-3 border border-purple-100">
+                          <div className="flex items-center gap-2 mb-2 flex-wrap">
+                            <strong className="text-purple-700">{host.name}</strong>
+                            <span className="text-xs bg-purple-100 text-purple-600 px-2 py-0.5 rounded-full">Тариф: {host.tariff}</span>
+                            <span className="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded-full font-bold">{host.price}</span>
+                          </div>
+                          <p className="text-xs text-gray-600 mb-1"><strong>Характеристики:</strong> {host.specs}</p>
+                          <p className="text-xs text-green-600 mb-1"><strong>Плюсы:</strong> {host.pros}</p>
+                          <p className="text-xs text-amber-600"><strong>Минусы:</strong> {host.cons}</p>
+                          <p className="text-xs text-gray-500 mt-1"><i className="fas fa-link mr-1"></i>{host.url}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
+                <p className="text-green-800 text-sm"><i className="fas fa-check-circle mr-2"></i><strong>Рекомендация:</strong> Для начала используйте <strong>GitHub Pages</strong> или <strong>Netlify</strong> — бесплатно, быстро, с автоматическим SSL. Когда проект вырастет — переходите на платный хостинг.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== STEP 11: ЗАГРУЗКА НА СЕРВЕР ===== */}
+          <div id="step-11" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">11</span>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-cloud-arrow-up text-violet-600 mr-2"></i>Загрузка сайта на сервер (пошагово)</h3>
+            </div>
+            <div className="space-y-4 text-gray-600">
+
+              <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
+                <p className="text-amber-800 text-sm"><i className="fas fa-exclamation-triangle mr-2"></i><strong>Важно:</strong> Загружать нужно содержимое папки <code className="bg-amber-100 px-1.5 py-0.5 rounded font-mono text-xs">dist/</code>, а не саму папку! Внутри должны быть файлы: <code className="bg-amber-100 px-1.5 py-0.5 rounded font-mono text-xs">index.html</code>, <code className="bg-amber-100 px-1.5 py-0.5 rounded font-mono text-xs">assets/</code></p>
+              </div>
+
+              {/* GitHub Pages */}
+              <div className="bg-white rounded-xl p-5 border-2 border-violet-200">
+                <p className="font-bold text-violet-800 mb-3 text-lg">Вариант A: GitHub Pages (рекомендуется)</p>
+                <div className="bg-violet-50 rounded-lg p-4 mb-3">
+                  <p className="font-semibold text-violet-700 mb-2">Что нужно:</p>
+                  <ul className="text-sm text-violet-600 space-y-1">
+                    <li>• Аккаунт на <strong>github.com</strong> (бесплатно)</li>
+                    <li>• Файлы сайта (папка <code className="bg-violet-100 px-1.5 py-0.5 rounded font-mono text-xs">dist/</code>)</li>
+                  </ul>
+                </div>
+                <ol className="space-y-3 ml-1">
+                  {[
+                    'Зарегистрируйтесь на github.com',
+                    'Нажмите «New repository» (зелёная кнопка)',
+                    'Назовите репозиторий: my-shop-site (или любое имя)',
+                    'Выберите «Public» (публичный)',
+                    'Нажмите «Create repository»',
+                    'На странице репозитория нажмите «uploading an existing file»',
+                    'Откройте папку dist/ на компьютере',
+                    'Перетащите ВСЕ файлы из dist/ в браузер (index.html, assets/)',
+                    'Нажмите «Commit changes»',
+                    'Перейдите в Settings → Pages',
+                    'В разделе «Source» выберите ветку main и папку / (root)',
+                    'Нажмите «Save»',
+                    'Через 1-2 минуты сайт будет доступен: https://ваш-username.github.io/my-shop-site/',
+                  ].map((step, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="w-6 h-6 bg-violet-200 text-violet-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                      <span className="text-sm">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              {/* Netlify */}
+              <div className="bg-white rounded-xl p-5 border-2 border-purple-200">
+                <p className="font-bold text-purple-800 mb-3 text-lg">Вариант B: Netlify (drag & drop — самый простой)</p>
+                <ol className="space-y-3 ml-1">
+                  {[
+                    'Зарегистрируйтесь на netlify.com (можно через GitHub/Google)',
+                    'После входа вы увидите область «Drag and drop your site folder here»',
+                    'Откройте папку dist/ на компьютере',
+                    'Перетащите ВСЮ папку dist/ прямо в браузер на Netlify',
+                    'Подождите 30 секунд — загрузка и деплой',
+                    'Сайт доступен по ссылке: https://random-name-123.netlify.app',
+                    'Можно изменить имя сайта: Site settings → Change site name',
+                  ].map((step, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="w-6 h-6 bg-purple-200 text-purple-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                      <span className="text-sm">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              {/* Обычный хостинг FTP */}
+              <div className="bg-white rounded-xl p-5 border-2 border-indigo-200">
+                <p className="font-bold text-indigo-800 mb-3 text-lg">Вариант C: Обычный хостинг (FTP — Beget, Timeweb и т.д.)</p>
+                <div className="bg-indigo-50 rounded-lg p-4 mb-3">
+                  <p className="font-semibold text-indigo-700 mb-2">Что нужно:</p>
+                  <ul className="text-sm text-indigo-600 space-y-1">
+                    <li>• Купленный хостинг (Beget, Timeweb, REG.RU)</li>
+                    <li>• FTP-клиент: <strong>FileZilla</strong> (бесплатно, filezilla-project.org)</li>
+                    <li>• Данные FTP из панели хостинга (адрес, логин, пароль)</li>
+                  </ul>
+                </div>
+                <ol className="space-y-3 ml-1">
+                  {[
+                    'Купите хостинг (например, Beget — бесплатный тариф)',
+                    'Войдите в панель управления хостингом',
+                    'Найдите раздел «FTP» или «Файловый менеджер»',
+                    'Скопируйте данные FTP: адрес (ftp.ваш-домен.ru), логин, пароль',
+                    'Скачайте и установите FileZilla (filezilla-project.org)',
+                    'Откройте FileZilla → введите данные FTP вверху:',
+                    'Хост: ftp.ваш-домен.ru | Логин: ваш_логин | Пароль: ваш_пароль | Порт: 21',
+                    'Нажмите «Быстрое соединение»',
+                    'Справа откройте папку public_html/ (или www/)',
+                    'Слева откройте папку dist/ на вашем компьютере',
+                    'Выделите ВСЕ файлы в dist/ (Ctrl+A)',
+                    'Перетащите их в public_html/ справа',
+                    'Дождитесь загрузки (1-2 минуты)',
+                    'Сайт доступен по вашему домену!',
+                  ].map((step, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="w-6 h-6 bg-indigo-200 text-indigo-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                      <span className="text-sm">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
+                <p className="text-green-800 text-sm"><i className="fas fa-check-circle mr-2"></i><strong>Проверка:</strong> После загрузки откройте сайт в браузере. Если видите каталог товаров — всё работает!</p>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== STEP 12: ПОДКЛЮЧЕНИЕ ДОМЕНА ===== */}
+          <div id="step-12" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">12</span>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-link text-violet-600 mr-2"></i>Подключение домена и SSL</h3>
+            </div>
+            <div className="space-y-4 text-gray-600">
+              <p>Привязываем ваш купленный домен к сайту на хостинге.</p>
+
+              <div className="bg-violet-50 rounded-xl p-5 border border-violet-100">
+                <p className="font-semibold text-violet-800 mb-3"><i className="fas fa-link mr-2"></i>Подключение домена к GitHub Pages:</p>
+                <ol className="space-y-3 ml-1">
+                  {[
+                    'В репозитории: Settings → Pages → Custom domain',
+                    'Введите ваш домен: myshop.ru',
+                    'Нажмите «Save»',
+                    'В личном кабинете регистратора домена найдите «DNS» или «Управление зоной»',
+                    'Добавьте A-записи, указывающие на IP GitHub:',
+                  ].map((step, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="w-6 h-6 bg-violet-200 text-violet-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                      <span className="text-sm">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+                <div className="bg-gray-900 rounded-lg p-4 mt-3 font-mono text-sm">
+                  <p className="text-green-400">A  @  185.199.108.153</p>
+                  <p className="text-green-400">A  @  185.199.109.153</p>
+                  <p className="text-green-400">A  @  185.199.110.153</p>
+                  <p className="text-green-400">A  @  185.199.111.153</p>
+                </div>
+                <p className="text-sm text-gray-500 mt-3">Поставьте галочку «Enforce HTTPS» в настройках Pages</p>
+              </div>
+
+              <div className="bg-white rounded-xl p-5 border-2 border-purple-200">
+                <p className="font-semibold text-purple-800 mb-3"><i className="fas fa-link mr-2"></i>Подключение домена к Netlify:</p>
+                <ol className="space-y-3 ml-1">
+                  {[
+                    'Netlify → Domain settings → Add custom domain',
+                    'Введите ваш домен: myshop.ru',
+                    'Netlify покажет нужные DNS-записи',
+                    'Скопируйте их',
+                    'В личном кабинете регистратора домена → DNS → Добавить записи',
+                    'Вставьте записи из Netlify',
+                    'Ожидайте 5-30 минут (иногда до 24 часов)',
+                    'SSL подключится автоматически',
+                  ].map((step, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="w-6 h-6 bg-purple-200 text-purple-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                      <span className="text-sm">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="bg-white rounded-xl p-5 border-2 border-indigo-200">
+                <p className="font-semibold text-indigo-800 mb-3"><i className="fas fa-link mr-2"></i>Подключение домена к обычному хостингу:</p>
+                <ol className="space-y-3 ml-1">
+                  {[
+                    'Домен уже привязан автоматически при покупке хостинга',
+                    'Если нет — в панели хостинга найдите «Привязка доменов»',
+                    'Добавьте ваш домен',
+                    'SSL (Let\'s Encrypt) обычно включается в один клик в панели',
+                  ].map((step, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="w-6 h-6 bg-indigo-200 text-indigo-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{i + 1}</span>
+                      <span className="text-sm">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
+                <p className="text-green-800 text-sm"><i className="fas fa-shield-halved mr-2"></i><strong>SSL (HTTPS)</strong> подключается автоматически на GitHub Pages и Netlify. На обычном хостинге — через Let's Encrypt (бесплатно) в панели хостинга.</p>
+              </div>
+
+              <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
+                <p className="text-amber-800 text-sm"><i className="fas fa-clock mr-2"></i><strong>Время propagation:</strong> После изменения DNS-записей домен может работать не сразу. Подождите от 5 минут до 24 часов.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== STEP 13: ЧТО ПОМЕНЯТЬ ПЕРЕД ЗАПУСКОМ ===== */}
+          <div id="step-13" className="bg-white rounded-2xl shadow-sm border border-violet-100 p-6 md:p-8 mb-6 scroll-mt-24">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-700 rounded-xl flex items-center justify-center text-white font-bold">13</span>
+              <h3 className="text-xl font-bold text-gray-900"><i className="fas fa-edit text-violet-600 mr-2"></i>Что нужно поменять перед запуском</h3>
+            </div>
+            <div className="space-y-4 text-gray-600">
+              <p>Перед публикацией сайта обязательно проверьте и измените следующие настройки:</p>
+
+              <div className="bg-red-50 rounded-xl p-5 border border-red-200">
+                <p className="font-bold text-red-800 text-lg mb-3"><i className="fas fa-exclamation-triangle mr-2"></i>ОБЯЗАТЕЛЬНО ИЗМЕНИТЬ:</p>
+                <div className="space-y-4">
+                  <div className="bg-white rounded-lg p-4 border border-red-100">
+                    <p className="font-semibold text-red-700 mb-2">1. Ссылка на Telegram бота</p>
+                    <p className="text-sm text-gray-600 mb-2">В админ-панели → вкладка «⚙️ Настройки» → замените <code className="bg-red-100 px-2 py-0.5 rounded text-red-700 font-mono text-xs break-all">https://t.me/your_bot?start=buy</code> на ссылку вашего бота</p>
+                    <div className="bg-gray-900 rounded p-3 font-mono text-xs">
+                      <p className="text-red-400">❌ Было: https://t.me/your_bot?start=buy</p>
+                      <p className="text-green-400">✅ Стало: https://t.me/my_shop_bot?start=buy</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-lg p-4 border border-red-100">
+                    <p className="font-semibold text-red-700 mb-2">2. Пароль админ-панели</p>
+                    <p className="text-sm text-gray-600 mb-2">По умолчанию пароль <code className="bg-red-100 px-2 py-0.5 rounded text-red-700 font-mono text-xs">admin123</code>. Его нужно изменить в коде!</p>
+                    <div className="bg-gray-900 rounded p-3 font-mono text-xs">
+                      <p className="text-gray-400">// Найдите в коде (src/App.tsx) строку:</p>
+                      <p className="text-red-400">❌ const savedPassword = localStorage.getItem('shop_admin_password') || 'admin123'</p>
+                      <p className="text-gray-400">// Замените на свой пароль:</p>
+                      <p className="text-green-400">✅ const savedPassword = localStorage.getItem('shop_admin_password') || 'мой_секретный_пароль_123'</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-lg p-4 border border-red-100">
+                    <p className="font-semibold text-red-700 mb-2">3. Домен в index.html</p>
+                    <p className="text-sm text-gray-600 mb-2">В файле <code className="bg-red-100 px-2 py-0.5 rounded text-red-700 font-mono text-xs">index.html</code> замените <code className="bg-red-100 px-2 py-0.5 rounded text-red-700 font-mono text-xs">your-domain.com</code> на ваш реальный домен:</p>
+                    <div className="bg-gray-900 rounded p-3 font-mono text-xs">
+                      <p className="text-red-400">❌ &lt;link rel="canonical" href="https://your-domain.com/" /&gt;</p>
+                      <p className="text-green-400">✅ &lt;link rel="canonical" href="https://myshop.ru/" /&gt;</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-amber-50 rounded-xl p-5 border border-amber-200">
+                <p className="font-bold text-amber-800 text-lg mb-3"><i className="fas fa-lightbulb mr-2"></i>РЕКОМЕНДУЕТСЯ ПРОВЕРИТЬ:</p>
+                <div className="space-y-3">
+                  {[
+                    { num: 1, text: 'SEO-настройки: вкладка «🔍 SEO сайта» — заполните Title, Description, Keywords' },
+                    { num: 2, text: 'Товары: добавьте реальные товары с фото и описаниями' },
+                    { num: 3, text: 'Категории: создайте нужные категории с SEO-тегами' },
+                    { num: 4, text: 'Тест: нажмите «Купить» на любом товаре — должен открыться ваш Telegram бот' },
+                    { num: 5, text: 'Мобильная версия: проверьте сайт на телефоне' },
+                    { num: 6, text: 'Скорость: проверьте на pagespeed.web.dev (должно быть 90+ баллов)' },
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-3 items-start">
+                      <span className="w-6 h-6 bg-amber-200 text-amber-700 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">{item.num}</span>
+                      <span className="text-sm">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-green-50 rounded-xl p-4 border border-green-200">
+                <p className="text-green-800 text-sm"><i className="fas fa-check-circle mr-2"></i><strong>После всех изменений:</strong> пересоберите проект (<code className="bg-green-100 px-1.5 py-0.5 rounded font-mono text-xs">npm run build</code>) и загрузите новую версию на сервер.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== STEP 14: ФИНАЛЬНЫЙ ЧЕК-ЛИСТ ===== */}
+          <div id="step-14" className="bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl p-6 md:p-8 text-white mb-8">
+            <h3 className="text-xl font-bold mb-4"><i className="fas fa-clipboard-check mr-2"></i>Финальный чек-лист запуска</h3>
             <div className="space-y-2">
               {[
                 '✅ Создан Telegram бот через @BotFather',
-                '✅ Куплен домен',
-                '✅ Выбран хостинг (GitHub Pages / Netlify)',
-                '✅ Сайт загружен на сервер',
-                '✅ Домен привязан + SSL активен',
-                '✅ Ссылка на бота настроена в админке',
+                '✅ Ссылка на бота настроена в админ-панели',
+                '✅ Пароль админки изменён с admin123 на свой',
+                '✅ Куплен домен (reg.ru / namecheap / cloudflare)',
+                '✅ Выбран хостинг (GitHub Pages / Netlify / Beget)',
+                '✅ Сайт загружен на сервер (папка dist/)',
+                '✅ Домен привязан к хостингу (DNS-записи)',
+                '✅ SSL-сертификат активен (https://)',
+                '✅ Домен в index.html заменён на реальный',
                 '✅ Товары и категории добавлены',
                 '✅ SEO-теги прописаны для каждого товара',
                 '✅ SEO-теги прописаны для каждой категории',
                 '✅ Глобальные SEO-настройки заполнены',
                 '✅ Сайт добавлен в Яндекс.Вебмастер',
                 '✅ Сайт добавлен в Google Search Console',
+                '✅ Подключена Яндекс.Метрика / Google Analytics',
+                '✅ Проверена мобильная версия',
+                '✅ Проверена скорость загрузки (PageSpeed 90+)',
+                '✅ Протестирована кнопка «Купить» — открывает бота',
               ].map((item, i) => <p key={i} className="text-sm text-white/90">{item}</p>)}
             </div>
           </div>
